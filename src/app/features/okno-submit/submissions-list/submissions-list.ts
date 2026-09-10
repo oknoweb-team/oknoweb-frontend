@@ -40,6 +40,20 @@ export class SubmissionsList {
 
   private filterText: string = "";
 
+  ngOnInit() {
+    this.filteredSubmissions = this.submissions;
+
+    this.applySort(SortingType.NewOld);
+
+    this.applyShowcaseSize(ShowcaseSize.Less);
+    this.filter();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.filter();
+    this.applySort(this.currentSorting);
+  }
+
   setFilterText(filter: string) {
     this.filterText = filter;
     this.filter();
@@ -176,20 +190,5 @@ export class SubmissionsList {
     if (this.currentTab <= 0) {
       this.currentTab = this.tabsCount;
     }
-  }
-
-  ngOnInit() {
-    this.filteredSubmissions = this.submissions;
-
-    // this.currentSorting = SortingType.NewOld;
-    // this.sortText = 'nf-md-sort_descending';
-    this.applySort(SortingType.NewOld);
-
-    this.applyShowcaseSize(ShowcaseSize.Less);
-    this.filter();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    this.filter();
   }
 }
