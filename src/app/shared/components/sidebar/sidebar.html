@@ -73,15 +73,14 @@
     }
     @else
     {
-      <div class="sticky top-0 z-50 block h-screen w-1/20 bg-white border-r-4 border-r-pink-500">
+      <aside class="w-1/20 block text-left shrink-0 bg-white border-r-4 border-r-pink-500 outline-white outline-4">
         <div class="w-full flex justify-center">
           <ng-container *ngTemplateOutlet="oknologo" />
         </div>
-      </div>
-
-      <div class="w-19/20">
+      </aside>
+      <main class="flex-1 overflow-y-auto">
         <ng-container *ngTemplateOutlet="content" />
-      </div>
+      </main>
     }
     </div>
   }
