@@ -52,7 +52,7 @@
           <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
             @for (content of gamejam.content; track $index) {
               <app-button [link]="content.link" preset="full t1 bluealt2" class="w-full">
-                <div class="mx-1 w-full">{{content.author}} {{content.label}}</div>
+                <div class="mx-1 w-full">{{content.author}} <br> {{content.label}}</div>
                 <img
                   src="https://oknoweb.ru/api/community/content/{{content.id}}/cover"
                   alt="Loading"
