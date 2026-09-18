@@ -34,7 +34,7 @@ export class SubmissionPage {
           this._submission.set(submission);
 
           this.document.body.classList.add('min-h-screen');
-          this.document.body.classList.add('bg-[url(/background.png)]');
+          this.document.body.classList.add('bg-[url(/bg.png)]');
           this.document.body.classList.add('bg-repeat');
         },
         error: (e) => {
@@ -46,7 +46,7 @@ export class SubmissionPage {
 
   ngOnDestroy() {
     this.document.body.classList.remove('min-h-screen');
-    this.document.body.classList.remove('bg-[url(/background.png)]');
+    this.document.body.classList.remove('bg-[url(/bg.png)]');
     this.document.body.classList.remove('bg-repeat');
   }
 }

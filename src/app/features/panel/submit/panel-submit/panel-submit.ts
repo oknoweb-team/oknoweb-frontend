@@ -45,7 +45,7 @@ export class PanelSubmit extends PanelPage {
 
   protected override validationPassed(): void {
     this.document.body.classList.add('min-h-screen');
-    this.document.body.classList.add('bg-[url(/background.png)]');
+    this.document.body.classList.add('bg-[url(/bg.png)]');
     this.document.body.classList.add('bg-repeat');
 
     this.loadSubmissions();
@@ -53,7 +53,7 @@ export class PanelSubmit extends PanelPage {
 
   ngOnDestroy() {
     this.document.body.classList.remove('min-h-screen');
-    this.document.body.classList.remove('bg-[url(/background.png)]');
+    this.document.body.classList.remove('bg-[url(/bg.png)]');
     this.document.body.classList.remove('bg-repeat');
   }
 

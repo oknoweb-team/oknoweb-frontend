@@ -22,7 +22,7 @@ export class Home {
   constructor(@Inject(DOCUMENT) private document: Document) {}
   ngOnInit() {
     this.document.body.classList.add('min-h-screen');
-    this.document.body.classList.add('bg-[url(/background.png)]');
+    this.document.body.classList.add('bg-[url(/bg.png)]');
     this.document.body.classList.add('bg-repeat');
 
     this.submitService.getSubmissions().subscribe(subs => {
@@ -38,7 +38,7 @@ export class Home {
 
   ngOnDestroy() {
     this.document.body.classList.remove('min-h-screen');
-    this.document.body.classList.remove('bg-[url(/background.png)]');
+    this.document.body.classList.remove('bg-[url(/bg.png)]');
     this.document.body.classList.remove('bg-repeat');
   }
 }
