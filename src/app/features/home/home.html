@@ -163,46 +163,53 @@
   </app-block>
 
   <!-- DONATION BLOCK -->
-  <app-block bg="[url(/donation_bg.png)]" margin="md:mx-[4vw]" class="font-main font-bold" id="donation">
-    <div class="leading-none text-[30vw] md:text-[20vw] text-center text-[#000555]">ДОНАТ</div>
 
-    <app-block margin="mx-[1vw]">
-      <div class="text-pink-500 text-4xl md:text-5xl xl:text-6xl 3xl:text-8xl text-center m-3">
-        <u>Поддержите проект рублем</u>
+  <div class="font-main font-bold flex justify-center mbe-5 mbs-5 md:mx-[4vw] bg-[url(/donation_bg.png)]" id="donation">
+    <div
+      class="w-full border-10 3xl:border-20 border-pink-500 border-double px-4 sm:px-6 lg:px-8"
+    >
+      <div class="w-full mx-1">
+          <div class="leading-none text-[30vw] md:text-[20vw] text-center text-[#000555]">ДОНАТ</div>
+
+          <app-block margin="mx-[1vw]">
+            <div class="text-pink-500 text-4xl md:text-5xl xl:text-6xl 3xl:text-8xl text-center m-3">
+              <u>Поддержите проект рублем</u>
+            </div>
+            <div class="text-2xl md:text-2xl xl:text-4xl 3xl:text-7xl md:text-center m-3 mb-6">
+              <div class="border-b-4 pb-4 mb-4 border-pink-400">
+                OknoExclusive - это лучший способ поддержать все наши проекты - подписка на Boosty, дающая
+                доступ к эксклюзивному контенту и приватному Telegram-чату, где мы делимся всеми инсайдами
+                наших проектов.
+              </div>
+
+              <div class="border-b-4 pb-4 mb-4 border-pink-400">
+                Также участники закрытого Telegram-чата участвуют в голосованиях и непосредственно влияют
+                на наши проекты
+              </div>
+
+              <div class="mb-4">
+                Если вы хотите сделать единоразовый донат - наш Donation Alerts к вашим услугам
+              </div>
+
+              <div class="flex flex-col gap-y-4 items-center">
+                <app-button
+                  preset="full pinkalt2 t4"
+                  link="https://www.donationalerts.com/r/oknogmdv"
+                  class="w-[90%]"
+                >
+                  donation alerts
+                </app-button>
+                <app-button preset="full pinkalt2 t4" link="https://boosty.to/oknoboosty" class="w-[90%]">
+                  boosty
+                </app-button>
+              </div>
+            </div>
+          </app-block>
+
+          <br />
       </div>
-      <div class="text-2xl md:text-2xl xl:text-4xl 3xl:text-7xl md:text-center m-3 mb-6">
-        <div class="border-b-4 pb-4 mb-4 border-pink-400">
-          OknoExclusive - это лучший способ поддержать все наши проекты - подписка на Boosty, дающая
-          доступ к эксклюзивному контенту и приватному Telegram-чату, где мы делимся всеми инсайдами
-          наших проектов.
-        </div>
-
-        <div class="border-b-4 pb-4 mb-4 border-pink-400">
-          Также участники закрытого Telegram-чата участвуют в голосованиях и непосредственно влияют
-          на наши проекты
-        </div>
-
-        <div class="mb-4">
-          Если вы хотите сделать единоразовый донат - наш Donation Alerts к вашим услугам
-        </div>
-
-        <div class="flex flex-col gap-y-4 items-center">
-          <app-button
-            preset="full pinkalt2 t4"
-            link="https://www.donationalerts.com/r/oknogmdv"
-            class="w-[90%]"
-          >
-            donation alerts
-          </app-button>
-          <app-button preset="full pinkalt2 t4" link="https://boosty.to/oknoboosty" class="w-[90%]">
-            boosty
-          </app-button>
-        </div>
-      </div>
-    </app-block>
-
-    <br />
-  </app-block>
+    </div>
+  </div>
 
   <!-- CONTRIBUTE BLOCK -->
   <app-block margin="md:mx-[4vw]" id="contribute">
