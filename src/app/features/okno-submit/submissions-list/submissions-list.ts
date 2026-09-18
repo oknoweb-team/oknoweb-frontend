@@ -55,11 +55,13 @@ export class SubmissionsList {
 
     this.applyShowcaseSize(ShowcaseSize.Less);
     this.filter();
+    this.updateShowcase();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     this.filter();
     this.applySort(this.currentSorting)
+    this.updateShowcase();
   }
 
   public setFilterText(filter: string) {
