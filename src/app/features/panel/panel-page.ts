@@ -1,6 +1,6 @@
 import { Router } from "@angular/router";
 import { PanelService } from "../../core/services/panel-service";
-import { Directive, inject } from "@angular/core";
+import { Directive, DOCUMENT, Inject, inject } from "@angular/core";
 
 @Directive()
 export abstract class PanelPage {

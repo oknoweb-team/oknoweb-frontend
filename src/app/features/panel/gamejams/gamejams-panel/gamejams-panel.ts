@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, DOCUMENT, Inject, inject, signal } from '@angular/core';
 import { GameJam } from '../../../../core/models/gamejams.model';
 import { GameJamsService } from '../../../../core/services/gamejams-service';
 import { Block } from '../../../../shared/components/block/block';
@@ -20,8 +20,22 @@ export class GamejamsPanel extends PanelPage {
 
   private readonly gamejamsService = inject(GameJamsService);
 
+  constructor(@Inject(DOCUMENT) private document: Document) {
+    super();
+  }
+
   protected override validationPassed(): void {
+    this.document.body.classList.add('min-h-screen');
+    this.document.body.classList.add('bg-[url(/bg.png)]');
+    this.document.body.classList.add('bg-repeat');
+
     this.loadContent();
+  }
+
+  ngOnDestroy() {
+    this.document.body.classList.remove('min-h-screen');
+    this.document.body.classList.remove('bg-[url(/bg.png)]');
+    this.document.body.classList.remove('bg-repeat');
   }
 
   public loadContent() {

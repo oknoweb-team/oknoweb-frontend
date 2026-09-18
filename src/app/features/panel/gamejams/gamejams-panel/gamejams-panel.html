@@ -1,10 +1,12 @@
-<app-block>
-  <div class="text-5xl"> Добавлены: </div>
-  @for(jam of gamejams(); track $index) {
-    <app-gamejam-panel [gamejam]="jam"></app-gamejam-panel>
-  }
+<app-block class="font-main font-bold ">
+  <div class="pb-4">
+    <div class="text-5xl"> Добавлены: </div>
+    <div class="m-4">
+      @for(jam of gamejams(); track $index) {
+        <app-gamejam-panel [gamejam]="jam"></app-gamejam-panel>
+      }
+    </div>
 
-  <br>
-
-  <app-gamejam-creator-panel (created)="loadContent()"></app-gamejam-creator-panel>
+    <app-gamejam-creator-panel (created)="loadContent()"></app-gamejam-creator-panel>
+  </div>
 </app-block>

@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, DOCUMENT, Inject, inject, signal } from '@angular/core';
 import { PanelPage } from '../panel-page';
 import { CommunityContent } from '../../../core/models/gamejams.model';
 import { CommunityContentService } from '../../../core/services/community-content';
@@ -28,8 +28,22 @@ export class CommunityContentEditor extends PanelPage {
 
   private readonly communityContentService = inject(CommunityContentService);
 
+  constructor(@Inject(DOCUMENT) private document: Document) {
+    super();
+  }
+
   protected override validationPassed(): void {
+    this.document.body.classList.add('min-h-screen');
+    this.document.body.classList.add('bg-[url(/bg.png)]');
+    this.document.body.classList.add('bg-repeat');
+
     this.loadContent();
+  }
+
+  ngOnDestroy() {
+    this.document.body.classList.remove('min-h-screen');
+    this.document.body.classList.remove('bg-[url(/bg.png)]');
+    this.document.body.classList.remove('bg-repeat');
   }
 
   public loadContent() {
