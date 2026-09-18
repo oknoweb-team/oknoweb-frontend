@@ -58,3 +58,5 @@ baseline.json
 
 # pnpm store
 .pnpm-store
+
+dist
