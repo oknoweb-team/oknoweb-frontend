@@ -1,66 +1,60 @@
 <link href="https://www.nerdfonts.com/assets/css/webfont.css" rel="stylesheet" />
-<app-block>
-  <app-button
-    class="absolute w-auto -ml-4 mt-2 sm:-ml-2 md:-ml-4 xl:-ml-4 xl:mt-4"
-      routeLink="/home"
-      pX="0"
-      customProperties="w-auto"
-    >
-    <i class="nf fa nf-fa-arrow_left text-4xl text-blue-700 inline hover:text-pink-500 p-1.5"></i>
-  </app-button>
-
-  <div class="w-full flex justify-center">
-    <img
-      class="h-38 md:h-80 object-contain object-center"
-      src="okno_submit.png"
-      alt="OKNO*SUBMIT"
-    />
-    </div>
-      <div class="font-main text-2xl text-center font-bold">
-        <p class="mt-2 mb-2">
-          OknoSubmit - это сервис для разработчиков игр и игроков. Мы помогаем малоизвестным авторам
-          заявить о себе
-        </p>
-
-        <hr class="border-blue-700" />
-        <hr class="border-blue-700" />
-
-        <p class="mt-2 mb-2">
-          Если ты разработчик -
-          <span
-            class="text-pink-500 hover:cursor-pointer hover:text-pink-400"
-            routerLink="/submit"
-            routerLinkActive="active"
-            rel="noopener noreferrer"
-            target="_blank"
-            >отправляй игру</span
-          >
-          - мы продвинем её бесплатно через тонны контента с твоим проектом.
-        </p>
-
-        <hr class="border-blue-700" />
-        <hr class="border-blue-700" />
-        <p class="mt-2 mb-2">
-          Если ты игрок - здесь ты найдешь свежие инди-игры и новых авторов. Играй, оставляй фидбек, помогай талантам
-          расти - и становись частью нашего сообщества
-
-        </p>
-        <hr class="border-blue-700">
-        <hr class="border-blue-700">
-        <p class="mt-2 mb-2 font-black text-3xl">Всего игр</p>
-        <p class="mt-2 mb-2 font-black text-5xl">
-          {{submissions().length}}
-        </p>
+<app-sidebar [navigation]="navigation()">
+  <app-block margin="md:mx-[2vw]">
+    <div class="w-full flex justify-center">
+      <img
+        class="h-38 md:h-80 object-contain object-center"
+        src="okno_submit.png"
+        alt="OKNO*SUBMIT"
+      />
       </div>
+        <div class="font-main text-2xl text-center font-bold">
+          <p class="mt-2 mb-2">
+            OknoSubmit - это сервис для разработчиков игр и игроков. Мы помогаем малоизвестным авторам
+            заявить о себе
+          </p>
 
-      <br />
-</app-block>
+          <hr class="border-blue-700" />
+          <hr class="border-blue-700" />
 
-<app-block color="pink-400" bg-color="alpha">
-  <app-submissions-list
-    [submissions]="submissions()"
-    label="label"
-    label="reviewed"
-    class="w-full"
-    ></app-submissions-list>
-</app-block>
+          <p class="mt-2 mb-2">
+            Если ты разработчик -
+            <span
+              class="text-pink-500 hover:cursor-pointer hover:text-pink-400"
+              routerLink="/submit"
+              routerLinkActive="active"
+              rel="noopener noreferrer"
+              target="_blank"
+              >отправляй игру</span
+            >
+            - мы продвинем её бесплатно через тонны контента с твоим проектом.
+          </p>
+
+          <hr class="border-blue-700" />
+          <hr class="border-blue-700" />
+          <p class="mt-2 mb-2">
+            Если ты игрок - здесь ты найдешь свежие инди-игры и новых авторов. Играй, оставляй фидбек, помогай талантам
+            расти - и становись частью нашего сообщества
+
+          </p>
+          <hr class="border-blue-700">
+          <hr class="border-blue-700">
+          <p class="mt-2 mb-2 font-black text-3xl">Всего игр</p>
+          <p class="mt-2 mb-2 font-black text-5xl">
+            {{submissions().length}}
+          </p>
+        </div>
+
+        <br />
+  </app-block>
+
+  <app-block color="pink-400" bg="alpha" margin="md:mx-[2vw]">
+    <app-submissions-list
+      [submissions]="submissions()"
+      (showcaseChanged)="updateNavigation($event)"
+      label="label"
+      label="reviewed"
+      class="w-full"
+      ></app-submissions-list>
+  </app-block>
+</app-sidebar>

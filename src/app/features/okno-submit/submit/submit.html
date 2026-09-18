@@ -1,62 +1,64 @@
-<div>
-  <div class="block w-full">
-    <app-block color="pink-500">
-      <div class="flex w-full justify-center">
-        <img
-          class="h-24 md:h-[12vw] object-contain object-center 3xl:mb-10"
-          src="submit_form.png"
-          alt="OKNO*SUBMIT"
+<app-sidebar>
+  <div>
+    <div class="block w-full">
+      <app-block color="pink-500">
+        <div class="flex w-full justify-center">
+          <img
+            class="h-24 md:h-[12vw] object-contain object-center 3xl:mb-10"
+            src="submit_form.png"
+            alt="OKNO*SUBMIT"
+          />
+        </div>
+
+        <br />
+        <input
+          id="name"
+          type="text"
+          [formControl]="name"
+          [maxLength]="36"
+          placeholder="Название"
+          class="bg-white text-blue-700 font-main text-2xl md:text-[2vw] text-center border-4 3xl:border-8 border-pink-400 focus:ring-0 focus:outline-2 focus:outline-pink-400 font-bold w-full mb-2 3xl:mb-8"
         />
-      </div>
 
-      <br />
-      <input
-        id="name"
-        type="text"
-        [formControl]="name"
-        [maxLength]="36"
-        placeholder="Название"
-        class="bg-white text-blue-700 font-main text-2xl md:text-[2vw] text-center border-4 3xl:border-8 border-pink-400 focus:ring-0 focus:outline-2 focus:outline-pink-400 font-bold w-full mb-2 3xl:mb-8"
-      />
+        <input
+          id="link"
+          type="text"
+          [formControl]="link"
+          [maxLength]="60"
+          placeholder="Ссылка на игру"
+          class="bg-white text-blue-700 font-main text-2xl md:text-[2vw] text-center border-4 3xl:border-8 border-pink-400 focus:ring-0 focus:outline-2 focus:outline-pink-400 font-bold w-full mb-2 3xl:mb-8"
+        />
 
-      <input
-        id="link"
-        type="text"
-        [formControl]="link"
-        [maxLength]="60"
-        placeholder="Ссылка на игру"
-        class="bg-white text-blue-700 font-main text-2xl md:text-[2vw] text-center border-4 3xl:border-8 border-pink-400 focus:ring-0 focus:outline-2 focus:outline-pink-400 font-bold w-full mb-2 3xl:mb-8"
-      />
+        <textarea
+          id="additionalInfo"
+          type="text"
+          [formControl]="additionalInfo"
+          [maxLength]="450"
+          rows="6"
+          placeholder="Кратко опишите ваш проект"
+          class="bg-white text-blue-700 font-main text-2xl md:text-[2vw] text-center border-4 3xl:border-8 border-pink-400 focus:ring-0 focus:outline-2 focus:outline-pink-400 font-bold w-full mb-2 3xl:mb-8"
+        ></textarea>
 
-      <textarea
-        id="additionalInfo"
-        type="text"
-        [formControl]="additionalInfo"
-        [maxLength]="450"
-        rows="6"
-        placeholder="Кратко опишите ваш проект"
-        class="bg-white text-blue-700 font-main text-2xl md:text-[2vw] text-center border-4 3xl:border-8 border-pink-400 focus:ring-0 focus:outline-2 focus:outline-pink-400 font-bold w-full mb-2 3xl:mb-8"
-      ></textarea>
+        <input
+          id="author"
+          type="text"
+          [formControl]="author"
+          [maxLength]="60"
+          placeholder="Автор"
+          class="bg-white text-blue-700 font-main text-2xl md:text-[2vw] text-center border-4 3xl:border-8 border-pink-400 focus:ring-0 focus:outline-2 focus:outline-pink-400 font-bold w-full mb-2 3xl:mb-8"
+        />
 
-      <input
-        id="author"
-        type="text"
-        [formControl]="author"
-        [maxLength]="60"
-        placeholder="Автор"
-        class="bg-white text-blue-700 font-main text-2xl md:text-[2vw] text-center border-4 3xl:border-8 border-pink-400 focus:ring-0 focus:outline-2 focus:outline-pink-400 font-bold w-full mb-2 3xl:mb-8"
-      />
+        <div class = "border-4 border-pink-500 w-full">
+          <app-tag-selector [includePanelOnly]= "false" [setSelectedTags]="[]" (tagsChanged)="onTagsChanged($event)"> </app-tag-selector>
+        </div>
 
-      <div class = "border-4 border-pink-500 w-full">
-        <app-tag-selector [includePanelOnly]= "false" [setSelectedTags]="[]" (tagsChanged)="onTagsChanged($event)"> </app-tag-selector>
-      </div>
+        <br>
 
-      <br>
+        <app-button preset="full t4 pink" (click)="submit()"> <b>*submit*</b> </app-button>
 
-      <app-button preset="full t4 pink" (click)="submit()"> <b>*submit*</b> </app-button>
-
-      <br />
-      <br />
-    </app-block>
+        <br />
+        <br />
+      </app-block>
+    </div>
   </div>
-</div>
+</app-sidebar>

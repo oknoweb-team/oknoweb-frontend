@@ -1,4 +1,12 @@
-import { Component, computed, Input, type Signal, type SimpleChanges } from '@angular/core';
+import {
+  Component,
+  computed,
+  EventEmitter,
+  Input,
+  Output,
+  type Signal,
+  type SimpleChanges,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Button } from '../../../shared/components/button/button';
 import { SubmitInfo } from '../../../core/models/submit.model';
@@ -22,27 +30,27 @@ export enum ShowcaseSize {
   templateUrl: './submissions-list.html',
 })
 export class SubmissionsList {
-  @Input('submissions') submissions: SubmitInfo[] = [];
-  @Input('label') label: string = 'submissions';
+  @Output() showcaseChanged = new EventEmitter<SubmitInfo[]>();
+  @Input() submissions: SubmitInfo[] = [];
 
   public filteredSubmissions: SubmitInfo[] = this.submissions;
   public listSignal = computed(() => this.filteredSubmissions);
 
-  private currentSorting: SortingType = SortingType.NewOld;
   public sortText: string = 'notinit';
-
-  private selectedTags: string[] = [];
-  private currentShowcaseSizeSwitcher: ShowcaseSize = ShowcaseSize.Less;
   public currentShowcaseSize: number = 0;
   public currentTab: number = 1;
   public tabsCount: number = 1;
   public showcaseSizeText: string = 'notinit';
 
-  private filterText: string = "";
+  private currentSorting: SortingType = SortingType.NewOld;
+
+  private selectedTags: string[] = [];
+  private currentShowcaseSizeSwitcher: ShowcaseSize = ShowcaseSize.Less;
+
+  private filterText: string = '';
 
   ngOnInit() {
     this.filteredSubmissions = this.submissions;
-
     this.applySort(SortingType.NewOld);
 
     this.applyShowcaseSize(ShowcaseSize.Less);
@@ -51,34 +59,50 @@ export class SubmissionsList {
 
   ngOnChanges(changes: SimpleChanges) {
     this.filter();
-    this.applySort(this.currentSorting);
+    this.applySort(this.currentSorting)
   }
 
-  setFilterText(filter: string) {
+  public setFilterText(filter: string) {
     this.filterText = filter;
     this.filter();
   }
-  filter() {
-    this.filteredSubmissions = this.submissions.filter((item) =>
-      (item.name.toLowerCase().includes(this.filterText.toLowerCase()) || this.filterText === '') && (this.selectedTags.length == 0 || this.hasSelectedTags(item)),
+
+  public filter() {
+    this.filteredSubmissions = this.submissions.filter(
+      (item) =>
+        (item.name.toLowerCase().includes(this.filterText.toLowerCase()) ||
+          this.filterText === '') &&
+        (this.selectedTags.length == 0 || this.hasSelectedTags(item)),
     );
 
     this.applyShowcaseSize(this.currentShowcaseSizeSwitcher);
+    this.updateShowcase();
   }
 
-  selectedTagsChanged(tags: string[])
-  {
+  private updateShowcase() {
+    let i = 0;
+    let test: SubmitInfo[] = [];
+    for (const item of this.filteredSubmissions) {
+      if (
+        i >= (this.currentTab - 1) * this.currentShowcaseSize &&
+        i < this.currentTab * this.currentShowcaseSize
+      ) {
+        test.push(item);
+      }
+      i++;
+    }
+    this.showcaseChanged.emit(test);
+  }
+
+  public selectedTagsChanged(tags: string[]) {
     this.selectedTags = tags;
     this.filter();
   }
 
-  hasSelectedTags(submit: SubmitInfo) : boolean
-  {
+  private hasSelectedTags(submit: SubmitInfo): boolean {
     let counter = 0;
-    for (const tag of this.selectedTags)
-    {
-      if (submit.tags != null && submit.tags.includes(tag))
-      {
+    for (const tag of this.selectedTags) {
+      if (submit.tags != null && submit.tags.includes(tag)) {
         counter++;
       }
     }
@@ -86,7 +110,7 @@ export class SubmissionsList {
     return counter == this.selectedTags.length;
   }
 
-  switchSortingType() {
+  public switchSortingType() {
     let switchedSorting: number = this.currentSorting;
     switchedSorting++;
 
@@ -97,7 +121,7 @@ export class SubmissionsList {
     this.applySort(switchedSorting);
   }
 
-  applySort(type: SortingType) {
+  public applySort(type: SortingType) {
     this.currentSorting = type;
 
     this.filteredSubmissions.sort((a, b) => {
@@ -118,7 +142,7 @@ export class SubmissionsList {
     }
   }
 
-  switchShowcaseSize() {
+  public switchShowcaseSize() {
     let showcaseSize: number = this.currentShowcaseSizeSwitcher;
     showcaseSize++;
 
@@ -129,7 +153,7 @@ export class SubmissionsList {
     this.applyShowcaseSize(showcaseSize);
   }
 
-  getShowcaseSize(size: ShowcaseSize): number {
+  public getShowcaseSize(size: ShowcaseSize): number {
     switch (size) {
       case ShowcaseSize.Less: {
         return 5;
@@ -145,7 +169,7 @@ export class SubmissionsList {
     }
   }
 
-  applyShowcaseSize(size: ShowcaseSize) {
+  public applyShowcaseSize(size: ShowcaseSize) {
     this.currentShowcaseSizeSwitcher = size;
     this.currentTab = 1;
 
@@ -176,19 +200,30 @@ export class SubmissionsList {
     this.currentShowcaseSize = this.getShowcaseSize(size);
   }
 
-  moveNextTab() {
+  public moveNextTab() {
     this.currentTab++;
 
     if (this.currentTab > this.tabsCount) {
       this.currentTab = 1;
     }
+    this.scrollToTop();
+    this.updateShowcase();
   }
 
-  moveBackTab() {
+  public moveBackTab() {
     this.currentTab--;
 
     if (this.currentTab <= 0) {
       this.currentTab = this.tabsCount;
+    }
+    this.scrollToTop();
+    this.updateShowcase();
+  }
+
+  private scrollToTop() {
+    const element = document.getElementById('top');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 }

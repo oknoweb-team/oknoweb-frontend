@@ -10,6 +10,9 @@ import { PanelSubmit } from './features/panel/submit/panel-submit/panel-submit';
 import { PanelSubmitTags } from './features/panel/submit/panel-submit-tags/panel-submit-tags';
 import { Manifest } from './manifest/manifest';
 import { ManifestPrelude } from './manifest-prelude/manifest-prelude';
+import { GamejamsPanel } from './features/panel/gamejams/gamejams-panel/gamejams-panel';
+import { GamejamsPage } from './features/gamejams-page/gamejams-page';
+import { CommunityContentEditor } from './features/panel/community-content-editor/community-content-editor';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -37,6 +40,10 @@ export const routes: Routes = [
     component: SubmitSuccess,
   },
   {
+    path: 'gamejams',
+    component: GamejamsPage,
+  },
+  {
     path: 'panel',
     component: PanelRoot,
   },
@@ -47,6 +54,14 @@ export const routes: Routes = [
   {
     path: 'panel/submit',
     component: PanelSubmit,
+  },
+  {
+    path: 'panel/gamejams',
+    component: GamejamsPanel,
+  },
+  {
+    path: 'panel/community-content',
+    component: CommunityContentEditor,
   },
   {
     path: 'panel/submit/tags',

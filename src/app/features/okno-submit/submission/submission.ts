@@ -23,7 +23,6 @@ export class Submission
       const width = window.innerWidth;
       const height = window.innerHeight;
 
-      console.log(width > height)
       this.isHorizontal.set(width > height);
       this.horizontalObservable.subscribe(() => {
         if (this.isHorizontal())

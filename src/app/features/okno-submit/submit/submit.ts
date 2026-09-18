@@ -8,6 +8,7 @@ import { TagSelector } from '../tag-selector/tag-selector';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { SubmitPayload, TagInfo } from '../../../core/models/submit.model';
 import { Button } from '../../../shared/components/button/button';
+import { Sidebar } from '../../../shared/components/sidebar/sidebar';
 
 export const tagsResolver: ResolveFn<TagInfo[]> = (
   route: ActivatedRouteSnapshot,
@@ -24,7 +25,7 @@ export interface TagsRouteData
 
 @Component({
   selector: 'app-submit',
-  imports: [Button, Block, TagSelector, ReactiveFormsModule],
+  imports: [Button, Block, TagSelector, ReactiveFormsModule, Sidebar],
   templateUrl: './submit.html',
 })
 export class Submit {

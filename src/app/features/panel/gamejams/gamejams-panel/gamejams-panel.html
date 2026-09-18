@@ -1,0 +1,10 @@
+<app-block>
+  <div class="text-5xl"> Добавлены: </div>
+  @for(jam of gamejams(); track $index) {
+    <app-gamejam-panel [gamejam]="jam"></app-gamejam-panel>
+  }
+
+  <br>
+
+  <app-gamejam-creator-panel (created)="loadContent()"></app-gamejam-creator-panel>
+</app-block>

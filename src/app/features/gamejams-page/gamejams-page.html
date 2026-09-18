@@ -1,0 +1,69 @@
+<app-sidebar [navigation]="navigation()">
+  <div class="justify-center flex">
+    <div
+      class="flex full items-center justify-center text-4xl md:text-6xl 3xl:text-9xl font-main font-bold bg-white text-blue-600 pb-2 mt-4"
+    >
+      [ НАШИ ДЖЕМЫ ]
+    </div>
+  </div>
+
+  @if (isLoading) {
+  <div
+    class="flex h-screen w-full items-center justify-center text-6xl font-main font-bold text-blue-600"
+  >
+    <app-block> loading </app-block>
+  </div>
+  } @for (gamejam of gamejams(); track $index) {
+  <app-block margin="md:mx-[2vw]" [id]="gamejam.id">
+    <div class="block w-full pt-3 pb-3">
+      <div class="md:flex place-items-center ">
+        <div class="md:w-2/3">
+          <img
+            src="{{gamejam.coverLink}}"
+            alt="No Cover Art"
+            class="object-contain mt-2 mb-2 border-4 border-blue-700 w-full h-full"
+          />
+        </div>
+
+        <div class="w-full md:ml-4">
+          <div class="font-main text-4xl md:text-6xl xl:text-7xl 3xl:text-9xl text-center text-pink-500 mt-5">
+            <h2><b> {{gamejam.title}} </b></h2>
+          </div>
+
+          <div class="font-main text-2xl md:text-3xl xl:text-4xl 3xl:text-6xl text-center text-pink-500 mt-1">
+            <h2>
+              <b>
+                <a href="{{gamejam.link}}" target="_blank"> <u> {{ gamejam.link}}</u> </a></b
+              >
+            </h2>
+          </div>
+
+          <div class="font-main text-center text-2xl md:text-3xl 3xl:text-6xl text-pink-500 mt-2">
+            <h2><b> {{ gamejam.startDate }}-{{gamejam.endDate}}</b></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="">
+        @if (gamejam.content.length > 0) {
+          <div class="font-main font-bold text-4xl md:text-6xl xl:text-7xl 3xl:text-9xl text-center text-pink-500 mt-5 border-t-4 border-pink-500">
+             контент сообщества
+          </div>
+          <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+            @for (content of gamejam.content; track $index) {
+              <app-button [link]="content.link" preset="full t1 bluealt2" class="w-full">
+                <div class="mx-1 w-full">{{content.author}} {{content.label}}</div>
+                <img
+                  src="http://localhost:5100/community/content/{{content.id}}/cover"
+                  alt="No Cover Art"
+                  class="object-contain border-4 border-blue-700"
+                />
+              </app-button>
+          }
+        </div>
+        }
+      </div>
+    </div>
+  </app-block>
+  }
+</app-sidebar>

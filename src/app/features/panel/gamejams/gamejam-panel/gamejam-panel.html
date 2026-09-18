@@ -1,0 +1,29 @@
+<div class="text-3xl font-main font-bold mb-4">
+  {{gamejam.link}}
+  <br>
+  {{gamejam.startDate}}-{{gamejam.endDate}}
+
+  @if(editorOpened()) {
+    <input
+      id="gamejam-content"
+      type="text"
+      [formControl]="contentForm"
+      [maxLength]="60"
+      placeholder="контент через пробел"
+      class="bg-white text-blue-700 font-main text-2xl md:text-[2vw] text-center border-4 3xl:border-8 border-pink-400 focus:ring-0 focus:outline-2 focus:outline-pink-400 font-bold w-full mb-2 3xl:mb-8"
+    />
+
+    <app-button preset="full blue" (click)="updateContent()"> submit </app-button>
+  }
+  @else {
+    <br>
+    Content:
+    <br>
+    @for(item of gamejam.content; track $index)
+    {
+      -{{item.label}}
+      <br>
+    }
+    <app-button preset="full blue" (click)="openContentEditor()"> update </app-button>
+  }
+</div>

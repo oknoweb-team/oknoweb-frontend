@@ -1,74 +1,112 @@
-<div class="">
+<app-sidebar [navigation]="navigation">
   <!-- MAIN BLOCK -->
-  <app-block>
+  <app-block margin="md:mx-[4vw]" id="about">
     <div class="flex justify-center">
       <img
         class="w-70 md:w-120 3xl:w-140 object-contain object-center"
-        src="okno_logo.png"
+        src="okno.webp"
         alt="OKNO"
       />
     </div>
 
     <div
-      class="font-main leading-10 md:leading-10 md:text-5xl text-[47px] 2xl:text-6xl 3xl:text-7xl text-[#000555] md:text-center mb-5"
+      class="font-main text-[9vw] md:text-7xl leading-none md:leading-14 text-[#000555] md:text-center mb-5"
     >
       <b> OKNO - это комьюнити разработчиков и игроков</b>
     </div>
 
     <div
-      class="font-main text-3xl leading-7 md:leading-10 md:text-center md:text-4xl 2xl:text-5xl 3xl:text-6xl text-[#000555]"
+      class="font-main text-3xl leading-7 md:leading-10 md:text-center md:text-4xl 2xl:text-5xl 3xl:text-6xl text-[#000555] mt-4"
     >
       <h3><b> Мы объединяем людей, любящих игры, в крупнейшую независимую силу </b></h3>
     </div>
 
     <br />
 
-    <div class="grid gap-2 grid-cols-2 md:grid-cols-3 justify-items-center mb-4">
-      <div class="w-full">
-        <app-button preset="full blue t4" link="https://t.me/oknogmdv">telegram</app-button>
-      </div>
+    <app-button preset="full t4 pinkalt3" routeLink="manifest-prelude" class="mb-4"
+      ><b>НАШ МАНИФЕСТ</b></app-button
+    >
+    <br />
+    <br />
+  </app-block>
 
-      <div class="w-full">
-        <app-button preset="full blue t4" link="https://www.youtube.com/@OKNO">youtube</app-button>
-      </div>
-
-      <div class="w-full">
-        <app-button preset="full blue t4" link="https://boosty.to/oknoboosty">boosty</app-button>
-      </div>
-
-      <div class="w-full">
-        <app-button preset="full blue t4" link="https://www.tiktok.com/@oknogmdv"
-          >tiktok</app-button
-        >
-      </div>
-
-      <div class="w-full">
-        <app-button preset="full blue t4" link="https://www.twitch.tv/oknogmdv">twitch</app-button>
-      </div>
-
-      <div class="w-full">
-        <app-button preset="full blue t4" link="https://www.youtube.com/@OKNOStreams"
-          >нарезки</app-button
-        >
+  <!-- LINKS BLOCK -->
+  <app-block margin="md:mx-[4vw]" id="links">
+    <div class="outline-0 outline-blue-700 mt-8">
+      <div class="grid grid-cols-3 md:grid-cols-6 justify-items-center mb-4 mx-4">
+        <div class="w-full justify-center">
+          <a href="https://t.me/oknogmdv" target="_blank">
+            <img
+              class="w-full object-contain object-center transition-transform duration-150 hover:scale-110 hover:cursor-pointer"
+              src="telegram.webp"
+              alt="OKNO"
+            />
+          </a>
+        </div>
+        <div class="w-full justify-center">
+          <a href="https://www.youtube.com/@OKNO" target="_blank">
+            <img
+              class="w-full object-contain object-center transition-transform duration-150 hover:scale-110 hover:cursor-pointer"
+              src="youtube.webp"
+              alt="OKNO"
+            />
+          </a>
+        </div>
+        <div class="w-full justify-center">
+          <a href="https://boosty.to/oknoboosty" target="_blank">
+            <img
+              class="w-full object-contain object-center transition-transform duration-150 hover:scale-110 hover:cursor-pointer"
+              src="boosty.webp"
+              alt="OKNO"
+            />
+          </a>
+        </div>
+        <div class="w-full justify-center">
+          <a href="https://www.youtube.com/@OKNOStreams" target="_blank">
+          <img
+            class="w-full object-contain object-center transition-transform duration-150 hover:scale-110 hover:cursor-pointer"
+            src="youtube_narezki.webp"
+            alt="OKNO"
+          />
+          </a>
+        </div>
+        <div class="w-full justify-center">
+          <a href="https://www.twitch.tv/oknogmdv" target="_blank">
+            <img
+              class="w-full object-contain object-center transition-transform duration-150 hover:scale-110 hover:cursor-pointer"
+              src="twitch.webp"
+              alt="OKNO"
+            />
+          </a>
+        </div>
+        <div class="w-full justify-center">
+          <a hreaf="https://www.youtube.com/@OKNOStreams" target="_blank">
+            <img
+              class="w-full object-contain object-center transition-transform duration-150 hover:scale-110 hover:cursor-pointer"
+              src="donation_alerts.webp"
+              alt="OKNO"
+            />
+          </a>
+        </div>
       </div>
     </div>
-
-    <app-button preset="full t4 pinkalt3" routeLink="manifest-prelude" class="mb-4"><b>НАШ МАНИФЕСТ</b></app-button>
-    <br>
-    <br>
   </app-block>
 
   <!-- OKNO SUBMIT BLOCK -->
-  <app-block>
-    <div class="flex justify-center">
+  <app-block margin="md:mx-[4vw]" id="submit">
+    <div class="flex justify-center mt-4 mb-8">
       <img
-        class="h-38 md:h-90 object-contain object-center mt-5 mb-5"
+        class="block md:hidden w-full object-contain object-center p-4"
+        src="okno_submit_no_stars.png"
+        alt="OKNO SUBMIT"
+      />
+      <img
+        class="hidden md:block h-38 md:h-90 object-contain object-center"
         src="okno_submit.png"
-        alt="A descriptive summary of the image"
+        alt="OKNO SUBMIT"
       />
     </div>
 
-    <br />
     <div class="font-main text-2xl md:text-4xl 2xl:5xl md:text-center text-[#000555]">
       <b>
         <div
@@ -84,87 +122,116 @@
           Ролики, посты, короткие видео - весь этот контент с вашей игрой мы сделаем абсолютно
           бесплатно!
         </div>
-        <br />
-
-
-        <div class="flex flex-col gap-y-4 items-center w-full">
+        <div class="w-full flex flex-col gap-y-4 items-center mt-4 mb-6">
           <app-button preset="full blue t5" routeLink="/submit" class="w-full"
             >* submit *</app-button
           >
-          <app-button
-            preset="full blue t4"
-            routeLink="submissions"
-            class="w-full"
-            target=""
-            >all submits</app-button
+          <app-button preset="full blue t4" routeLink="submissions" class="w-full" target=""
+            >сабмиты</app-button
           >
         </div>
       </b>
     </div>
 
-    <br/>
-    <br/>
-
     <app-submissions-line [submissions]="submissionsLine()"></app-submissions-line>
+  </app-block>
 
+  <!-- GAMEJAMS -->
+  <app-block margin="md:mx-[4vw]" id="jams">
+    <div class="font-main text-2xl md:text-4xl 2xl:5xl md:text-center text-[#000555] mb-4">
+      <b>
+        <div
+          class="font-main text-[15vw] md:text-[10vw] text-[#000555] text-center mb-5 mt-5"
+        >
+          НАШИ ДЖЕМЫ
+        </div>
+
+        <div class="text-3xl md:text-4xl 3xl:text-5xl">
+
+          <div class="border-b-4 pb-4 mb-4 border-pink-400">
+            Геймджемы - это не только состязания разработчиков, но и ключевые ивенты в нашем
+            сообществе.
+          </div>
+          <div class="mb-2">
+            В это архиве собраны все проведенные нами джемы, а также весь контент, произведенный в их
+            рамках - девблоги участников, ролики организаторов и др
+          </div>
+        </div>
+
+        <div class="w-full mt-4">
+          <app-button preset="full blue t4" routeLink="/gamejams">архив</app-button>
+        </div>
+      </b>
+    </div>
   </app-block>
 
   <!-- DONATION BLOCK -->
-  <div class="flex justify-center md:mx-[8vw] mbe-20">
-    <div
-      class="border-10 border-blue-700 border-double bg-[url(/donation_bg.png)] w-full px-2 sm:px-4 2xl:px-6"
-    >
-      <br />
-      <br />
-      <div class="font-main text-9xl md:text-[200px] text-center text-[#000555]">
-        <h1>
-          <b> ДОНАТ </b>
-        </h1>
-      </div>
-      <br />
-      <div class="font-main leading-7 text-[#000555]">
-        <b>
-          <div class="text-center bg-white border-7 border-pink-400 border-double">
-            <br />
-
-            <div class="text-3xl md:text-3xl xl:text-5xl 3xl:text-8xl md:text-center m-3">
-              Поддержите проект рублем
-            </div>
-            <div class="text-2xl md:text-2xl xl:text-4xl 3xl:text-7xl md:text-center m-3">
-              ваши средства пойдут на оплату хостинга, организацию джемов, оплату работы
-              специалистов.
-              <br />
-              <br />
-              На Boosty за 150 рублей в месяц вы получите тонны эксклюзивного контента - обзоры
-              заявок, прокачка страниц ваших игр, разговорные видео и тд
-
-              <br />
-              <br />
-              <div class="flex flex-col gap-y-4 items-center w-full">
-                <app-button
-                  preset="full pinkalt2 t4"
-                  link="https://www.donationalerts.com/r/oknogmdv"
-                  class="w-[90%]"
-                >
-                  donation alerts
-                </app-button>
-                <app-button
-                  preset="full pinkalt2 t4"
-                  link="https://boosty.to/oknoboosty"
-                  class="w-[90%]"
-                >
-                  boosty
-                </app-button>
-              </div>
-            </div>
-            <br />
-          </div>
-
-          <br />
-        </b>
-      </div>
-
-      <br />
+  <app-block bg="[url(/donation_bg.png)]" margin="md:mx-[4vw]" class="font-main font-bold" id="donation">
+    <div class="leading-none text-[30vw] md:text-[20vw] text-center text-[#000555]">
+        ДОНАТ
     </div>
-  </div>
-</div>
+
+    <app-block margin="mx-[1vw]">
+      <div class="text-pink-500 text-4xl md:text-5xl xl:text-6xl 3xl:text-8xl text-center m-3">
+        <u>Поддержите проект рублем</u>
+      </div>
+      <div class="text-2xl md:text-2xl xl:text-4xl 3xl:text-7xl md:text-center m-3 mb-6">
+        <div class="border-b-4 pb-4 mb-4 border-pink-400">
+          OknoExclusive - это лучший способ поддержать все наши проекты - подписка на Boosty, дающая
+          доступ к эксклюзивному контенту и приватному Telegram-чату, где мы делимся всеми инсайдами
+          наших проектов.
+        </div>
+
+        <div class="border-b-4 pb-4 mb-4 border-pink-400">
+          Также участники закрытого Telegram-чата участвуют в голосованиях и непосредственно влияют на
+          наши проекты
+        </div>
+
+        <div class="mb-4">
+          Если вы хотите сделать единоразовый донат - наш Donation Alerts к вашим услугам
+        </div>
+
+        <div class="flex flex-col gap-y-4 items-center">
+          <app-button
+            preset="full pinkalt2 t4"
+            link="https://www.donationalerts.com/r/oknogmdv"
+            class="w-[90%]"
+          >
+            donation alerts
+          </app-button>
+          <app-button preset="full pinkalt2 t4" link="https://boosty.to/oknoboosty" class="w-[90%]">
+            boosty
+          </app-button>
+        </div>
+      </div>
+    </app-block>
+
+    <br />
+  </app-block>
+
+  <!-- CONTRIBUTE BLOCK -->
+  <app-block margin="md:mx-[4vw]" id="contribute">
+    <div class="font-main text-2xl md:text-4xl 2xl:5xl md:text-center text-[#000555] mb-4">
+      <b>
+        <div
+          class="font-main text-[8.5vw] text-[#000555] text-center mb-5 mt-5"
+        >
+          КОНТРИБЬЮТЕРАМ
+        </div>
+
+        <div class="text-4xl md:text-5xl 3xl:text-6xl border-b-4 pb-4 mb-4 border-pink-400">
+          НАМ НУЖНЫ РАЗРАБОТЧИКИ ДЛЯ НАШИХ ПРОЕКТОВ
+        </div>
+
+        <div class="text-3xl md:text-4xl 3xl:text-5xl mb-8">
+          <div class="border-b-4 pb-4 mb-4 border-pink-400">
+            Нам нужны фронтед разработчики на Angular и Asp.Net разработчики для бекенда.
+          </div>
+          <div class="border-b-4 pb-4 mb-4 border-pink-400">
+            Также, если вы бекенд разработчик на Go либо Rust, то вы также можете принять участие в наших проектах.
+          </div>
+        </div>
+      </b>
+    </div>
+  </app-block>
+</app-sidebar>

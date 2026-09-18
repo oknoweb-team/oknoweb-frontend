@@ -1,9 +1,10 @@
+<app-sidebar [navigation]="navigation">
 <app-block color="pink-500" class="font-main">
   <div id="manifest" class="font-bold text-6xl md:text-9xl text-center text-pink-600 mt-8 mb-4"> [МАНИФЕСТ] <br> <div class="text-3xl md:text-4xl"> by oknogmdv </div> </div>
 
   <hr class = "border-2 border-pink-600">
 
-  <div class="pb-4">
+  <div class="pb-4" id="problems">
     <div class="font-bold text-5xl md:text-6xl text-center text-pink-600 mt-8 mb-2">
       ПРОБЛЕМЫ
     </div>
@@ -25,7 +26,7 @@
           3. <b>Элитарность геймдева</b> - люди <b>искусственно</b> завышают порог входа в индустрию, <b>запугивают</b> новых людей <b>большим объемом</b> работы, гигантской <b>конкуренцией и неизбежным</b> провалом. В совокупности с пунктами выше образуют невероятно токсичную и отталкивающую атмосферу во всей сфере.       </li>
 
         <li class="mb-4" id="problem-4">
-          4. <b>Внедрение государства в индустрию</b> - окологосударственные компании (ВК, Яндекс и тд) заправляют <b>единственными</b> платформами в РФ - <b>Vk Play, Яндекс.игры</b> и др. В условиях <b>блокировок</b>, за <b>неимением</b> альтернатив разработчикам приходится мириться с <b>бешенными</b> требованиями модерации и <b>закручиванием гаек</b>
+          4. <b>Внедрение государства в индустрию</b> - окологосударственные компании (ВК, Яндекс и тд) заправляют <b>единственными</b> платформами в РФ - <b>Vk Play, Яндекс.игры</b> и др. В условиях <b>блокировок</b>, за <b>неимением</b> альтернатив разработчикам приходится мириться с <b>бешенными</b> требованиями модерации и <b>закручиванием гаек</b>.
         </li>
 
         <li class="mb-4" id="problem-5">
@@ -41,7 +42,7 @@
     </div>
   </div>
 
-  <div class="pt-4">
+  <div class="pt-4" id="solutions">
     <hr class = "border-2 border-pink-600">
     <div class="font-bold text-5xl md:text-6xl text-center text-pink-600 mt-8 mb-2">
       РЕШЕНИЯ
@@ -79,7 +80,8 @@
       <br>
     </div>
   </div>
-  <div class="mb-4 mt-4">
+
+  <div class="mb-4 mt-4" id="actions">
     <hr class = "border-2 border-pink-600">
     <div class="font-bold text-5xl md:text-6xl text-center text-pink-600 mt-8 mb-2">
       ДЕЙСТВИЯ
@@ -112,8 +114,10 @@
       </ol>
     </div>
   </div>
+
   <br>
-  <div>
+
+  <div id="projects">
     <hr class = "border-2 border-pink-600">
     <div class="font-bold text-5xl md:text-6xl text-center text-pink-600 mt-8 mb-2">
       НАШИ ПРОЕКТЫ
@@ -161,7 +165,7 @@
   </div>
 
   <br>
-  <div>
+  <div id="goals">
     <hr class = "border-2 border-pink-600">
     <div class="font-bold text-5xl md:text-6xl text-center text-pink-600 mt-8 mb-2">
       [ГЛОБАЛЬНЫЕ ЦЕЛИ]
@@ -196,3 +200,4 @@
     </div>
   </div>
 </app-block>
+</app-sidebar>

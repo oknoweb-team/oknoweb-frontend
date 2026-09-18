@@ -13,7 +13,7 @@ export class SubmitService {
 
   submitNew(payload: SubmitPayload): Observable<SubmitInfo>
   {
-    return this.http.post<SubmitInfo>(this.apiUrl + '/submissions', payload);
+    return this.http.post<SubmitInfo>(this.apiUrl + '/submit', payload);
   }
 
   getReviews(id: string): Observable<SubmissionReview[]>

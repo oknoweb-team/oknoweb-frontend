@@ -5,19 +5,19 @@ import { DOCUMENT } from '@angular/common';
 import { SubmitService } from '../../core/services/submit-service';
 import { SubmitInfo } from '../../core/models/submit.model';
 import { SubmissionsLine } from '../okno-submit/submissions-line/submissions-line';
+import { Sidebar } from '../../shared/components/sidebar/sidebar';
 
 @Component({
   selector: 'app-home',
-  imports: [Button, Block, SubmissionsLine],
+  imports: [Button, Block, SubmissionsLine, Sidebar],
   templateUrl: './home.html',
   styles: [],
 })
 export class Home {
-  targetDate = new Date('2026-08-07T23:00:00').getTime();
+  navigation : [string, string][] = [ ["ОБ OKNO", "about"], ["ССЫЛКИ", "links"], ["САБМИТ", "submit"], ["ДЖЕМЫ", "jams"], ["ДОНАТ", "donation"], ["КОНТРИБЬЮЕТРАМ", "contribute"] ]
+  submissionsLine = signal<SubmitInfo[]>([]);
 
   private submitService = inject(SubmitService);
-
-  submissionsLine = signal<SubmitInfo[]>([]);
 
   constructor(@Inject(DOCUMENT) private document: Document) {}
   ngOnInit() {

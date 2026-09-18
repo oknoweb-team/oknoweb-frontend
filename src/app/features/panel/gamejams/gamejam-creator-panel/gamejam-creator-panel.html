@@ -1,0 +1,46 @@
+@if (creationMenuOpened) {
+  <h2 class="text-3xl text-center"> добавить джем </h2>
+  <input
+    id="gamejam-link"
+    type="text"
+    [formControl]="link"
+    [maxLength]="60"
+    placeholder="ссылка на итч"
+    class="bg-white text-blue-700 font-main text-2xl md:text-[2vw] text-center border-4 3xl:border-8 border-pink-400 focus:ring-0 focus:outline-2 focus:outline-pink-400 font-bold w-full mb-2 3xl:mb-8"
+  />
+
+  <input
+    id="gamejam-start"
+    type="text"
+    [formControl]="startDate"
+    [maxLength]="60"
+    placeholder="начало джема mm/dd/yyyy"
+    class="bg-white text-blue-700 font-main text-2xl md:text-[2vw] text-center border-4 3xl:border-8 border-pink-400 focus:ring-0 focus:outline-2 focus:outline-pink-400 font-bold w-full mb-2 3xl:mb-8"
+  />
+
+  <input
+    id="gamejam-end"
+    type="text"
+    [formControl]="endDate"
+    [maxLength]="60"
+    placeholder="конец джема mm/dd/yyyy"
+    class="bg-white text-blue-700 font-main text-2xl md:text-[2vw] text-center border-4 3xl:border-8 border-pink-400 focus:ring-0 focus:outline-2 focus:outline-pink-400 font-bold w-full mb-2 3xl:mb-8"
+  />
+
+  <input
+    id="gamejam-content"
+    type="text"
+    [formControl]="content"
+    [maxLength]="60"
+    placeholder="контент айди через пробел"
+    class="bg-white text-blue-700 font-main text-2xl md:text-[2vw] text-center border-4 3xl:border-8 border-pink-400 focus:ring-0 focus:outline-2 focus:outline-pink-400 font-bold w-full mb-2 3xl:mb-8"
+  />
+
+  <div class="grid grid-cols-2 gap-x-2">
+    <app-button preset = "full bluealt2 t0" (click)="post()"> <b> создать </b></app-button>
+    <app-button preset = "full bluealt2 t0" (click)="closeMenu()"> <b> отмена </b></app-button>
+  </div>
+}
+@else {
+  <app-button preset="full t2 pink" (click)="openMenu()"> <b>новый джем</b></app-button>
+}
