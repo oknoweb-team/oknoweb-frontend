@@ -105,7 +105,7 @@
         class="fixed bottom-0 z-50 left-0 right-0 border-t flex items-center justify-around transition-all duratoin-100 ease-in-out">
         @if (isExpanded())
         {
-          <div class="w-full block bg-white border-t-4 border-pink-500 justify-center">
+          <div class="absolute bottom-0 w-full block bg-white border-t-4 border-pink-500 justify-center">
             <div class="text-center">
               <div class="block font-main font-bold pt-4 border-b-4 border-pink-500 mx-4">
                 <button
@@ -149,15 +149,14 @@
               </div>
             </div>
 
-            <div class="absolute bottom-0 bg-white h-30 w-full justify-center">
-
+            <div class="bg-white h-30 w-full justify-center">
               <button (click)="expand()" class="inline-flex w-full h-full">
-                  <img
-                    class="w-full object-contain object-center flex justify-center"
-                    src="okno_red.png"
-                    alt="OKNO"
-                  />
-                </button>
+                <img
+                  class="w-full object-contain object-center flex justify-center"
+                  src="okno_red.png"
+                  alt="OKNO"
+                />
+              </button>
             </div>
           </div>
         }
