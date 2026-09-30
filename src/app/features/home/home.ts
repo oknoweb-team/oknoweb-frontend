@@ -14,7 +14,7 @@ import { Sidebar } from '../../shared/components/sidebar/sidebar';
   styles: [],
 })
 export class Home {
-  navigation : [string, string][] = [ ["ОБ OKNO", "about"], ["ССЫЛКИ", "links"], ["САБМИТ", "submit"], ["ДЖЕМЫ", "jams"], ["ДОНАТ", "donation"], ["КОНТРИБЬЮЕРАМ", "contribute"] ]
+  navigation : [string, string][] = [ ["ОБ OKNO", "about"], ["ССЫЛКИ", "links"], ["САБМИТ", "submit"], ["ДЖЕМЫ", "jams"], ["ДОНАТ", "donation"], ["КОНТРИБЬЮЕРАМ", "contribute"], ["КОНТРИБЬЮЕРЫ", "contributers"]]
   submissionsLine = signal<SubmitInfo[]>([]);
 
   private submitService = inject(SubmitService);

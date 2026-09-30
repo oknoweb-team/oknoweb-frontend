@@ -5,25 +5,20 @@
 </ng-template>
 
 <ng-template #oknologo>
-  <button (click)="expand()" class="inline-flex w-full h-full">
-    <img
-      class="w-full object-contain object-center flex justify-center"
-      src="okno_red.png"
-      alt="OKNO"
-    />
-  </button>
 </ng-template>
 
   @if (isHorizontal())
   {
     <div class="flex h-screen w-screen overflow-hidden">
-    @if (isExpanded())
-    {
-      <aside class="w-90 block text-left shrink-0 bg-white border-r-4 border-r-pink-500 outline-white outline-4">
-        <div class="flex w-60 justify-center mb-4 border-b-4 border-pink-500 pb-4 mx-4">
-          <ng-container *ngTemplateOutlet="oknologo" />
+      <aside
+        [ngClass]="isExpanded() ? 'w-90' : 'w-16'"
+        class="block text-left shrink-0 bg-white border-r-4 border-r-pink-500 outline-white outline-4 transition-all duration-200 ease-in-out">
+        @if (isExpanded())
+        {
+        <div class="flex w-full justify-center px-4 pt-3 font-bold">
+          <app-button preset="full bluealt2" (onClick)="expand()" class="w-full"> <<< </app-button>
         </div>
-        <div class="mb-4 border-b-4 border-pink-500 pb-4 mx-4">
+        <div class="mb-4 text-nowrap border-b-4 border-pink-500 pb-4 mx-4">
           <div class="block font-main font-bold pt-4">
             <button
               routerLink="/home"
@@ -56,7 +51,7 @@
             </button>
           </div>
         </div>
-        <div class="mt-4 mx-4 text-wrap">
+        <div class="mt-4 text-nowrap mx-4">
           @for (item of navigation; track $index) {
             <button (click)="scrollToSection(item[1])" class="text-left font-main font-bold text-black hover:text-blue-500 text-3xl hover:text-4xl hover:cursor-pointer">
               > {{item[0]}}
@@ -65,23 +60,37 @@
             <br>
           }
         </div>
+        }
+        @else
+        {
+        <div class="relative flex overflow-x-hidden">
+          <div class="w-full h-full justify-center pt-3 inline-flex gap-3">
+            <app-button preset="full" (onClick)="expand()" class="w-full h-full">
+              <div class="[writing-mode:vertical-rl] pl-3 text-blue-500 font-bold flex-nowrap text-nowrap runningLine">
+                gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb
+                gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb
+                gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb
+                gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb
+                gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb
+                gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb
+              </div>
+              <div class="area-hidden [writing-mode:vertical-rl] pl-3 text-blue-500 font-bold flex-nowrap text-nowrap runningLine">
+                gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb
+                gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb
+                gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb
+                gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb
+                gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb
+                gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb gmdv gmdv gmdv oknoweb
+              </div>
+            </app-button>
+          </div>
+        </div>
+        }
       </aside>
 
       <main class="flex-1 overflow-y-auto">
         <ng-container *ngTemplateOutlet="content" />
       </main>
-    }
-    @else
-    {
-      <aside class="w-1/20 block text-left shrink-0 bg-white border-r-4 border-r-pink-500 outline-white outline-4">
-        <div class="w-full flex justify-center">
-          <ng-container *ngTemplateOutlet="oknologo" />
-        </div>
-      </aside>
-      <main class="flex-1 overflow-y-auto">
-        <ng-container *ngTemplateOutlet="content" />
-      </main>
-    }
     </div>
   }
   @else
@@ -91,7 +100,9 @@
         <ng-container *ngTemplateOutlet="content"/>
       </main>
 
-      <nav class="fixed bottom-0 z-50 left-0 right-0 h-auto bg-white border-t flex items-center justify-around">
+      <div
+        [ngClass]="isExpanded() ? 'h-full' : 'h-16'"
+        class="fixed bottom-0 z-50 left-0 right-0 border-t flex items-center justify-around transition-all duratoin-100 ease-in-out">
         @if (isExpanded())
         {
           <div class="w-full block bg-white border-t-4 border-pink-500 justify-center">
@@ -138,8 +149,15 @@
               </div>
             </div>
 
-            <div class="h-30 flex justify-center">
-              <ng-container *ngTemplateOutlet="oknologo" />
+            <div class="absolute bottom-0 bg-white h-30 w-full justify-center">
+
+              <button (click)="expand()" class="inline-flex w-full h-full">
+                  <img
+                    class="w-full object-contain object-center flex justify-center"
+                    src="okno_red.png"
+                    alt="OKNO"
+                  />
+                </button>
             </div>
           </div>
         }
@@ -147,10 +165,16 @@
         {
           <div class="w-full flex fixed bottom-0 z-50 bg-white border-t-4 border-pink-500 justify-center">
             <div class="flex w-1/6 justify-items-center">
-              <ng-container *ngTemplateOutlet="oknologo" />
+              <button (click)="expand()" class="inline-flex w-full h-full">
+                  <img
+                    class="w-full object-contain object-center flex justify-center"
+                    src="okno_red.png"
+                    alt="OKNO"
+                  />
+                </button>
             </div>
           </div>
         }
-      </nav>
+      </div>
     </div>
   }

@@ -32,8 +32,8 @@
 
   <!-- LINKS BLOCK -->
   <app-block margin="md:mx-[4vw]" id="links">
-    <div class="outline-0 outline-blue-700 mt-8">
-      <div class="grid grid-cols-3 md:grid-cols-6 justify-items-center mb-4 mx-4">
+    <div class="outline-0 outline-blue-700 mt-2 md:mt-8">
+      <div class="grid grid-cols-3 md:grid-cols-6 justify-items-center mb-2 md:mb-4 md:mx-4">
         <div class="w-full justify-center">
           <a href="https://t.me/oknogmdv" target="_blank">
             <img
@@ -80,7 +80,7 @@
           </a>
         </div>
         <div class="w-full justify-center">
-          <a hreaf="https://www.youtube.com/@OKNOStreams" target="_blank">
+          <a hreaf="https://www.donationalerts.com/r/oknogmdv" target="_blank">
             <img
               class="w-full object-contain object-center transition-transform duration-150 hover:scale-110 hover:cursor-pointer"
               src="donation_alerts.webp"
@@ -96,12 +96,12 @@
   <app-block margin="md:mx-[4vw]" id="submit">
     <div class="flex justify-center mt-4 mb-8">
       <img
-        class="block md:hidden w-full object-contain object-center p-4"
+        class="block md:hidden w-full object-contain object-center"
         src="okno_submit_no_stars.png"
         alt="OKNO SUBMIT"
       />
       <img
-        class="hidden md:block h-38 md:h-90 object-contain object-center"
+        class="hidden md:block h-auto object-contain object-center"
         src="submit_logo.png"
         alt="OKNO SUBMIT"
       />
@@ -110,23 +110,23 @@
     <div class="font-main text-2xl md:text-4xl 2xl:5xl md:text-center text-[#000555]">
       <b>
         <div
-          class="font-main leading-10 md:leading-10 md:text-5xl text-[42px] 2xl:text-6xl 3xl:text-7xl text-[#000555] md:text-center mb-5"
+          class="font-main leading-none text-4xl md:text-4xl xl:text-5xl 2xl:text-6xl 3xl:text-7xl text-[#000555] md:text-center mb-5"
         >
-          Разрабатываете игры? Хотите, чтобы о них узнали?
+          Разрабатываете игры? <br> Хотите, чтобы о них узнали?
           <br />
         </div>
 
-        <div class="text-3xl md:text-4xl 3xl:text-5xl">
+        <div class="text-2xl md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl leading-none">
           Заполните форму всего из 3 пунктов и мы продвинем ваш проект!
           <br />
           Ролики, посты, короткие видео - весь этот контент с вашей игрой мы сделаем абсолютно
           бесплатно!
         </div>
         <div class="w-full flex flex-col gap-y-4 items-center mt-4 mb-6">
-          <app-button preset="full blue t5" routeLink="/submit" class="w-full"
+          <app-button preset="full blue t5 scale" routeLink="/submit" class="w-full"
             >* submit *</app-button
           >
-          <app-button preset="full blue t4" routeLink="submissions" class="w-full" target=""
+          <app-button preset="full blue t4 scale" routeLink="submissions" class="w-full" target=""
             >сабмиты</app-button
           >
         </div>
@@ -138,13 +138,13 @@
 
   <!-- GAMEJAMS -->
   <app-block margin="md:mx-[4vw]" id="jams">
-    <div class="font-main text-2xl md:text-4xl 2xl:5xl md:text-center text-[#000555] mb-4">
+    <div class="font-main md:text-center text-[#000555] mb-4">
       <b>
-        <div class="font-main text-[15vw] md:text-[10vw] text-[#000555] text-center mb-5 mt-5">
+        <div class="font-main text-[15vw] md:text-[10vw] text-[#000555] text-center mb-5 mt-5 leading-none">
           НАШИ ДЖЕМЫ
         </div>
 
-        <div class="text-3xl md:text-4xl 3xl:text-5xl">
+        <div class="text-2xl md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl leading-none">
           <div class="border-b-4 pb-4 mb-4 border-pink-400">
             Геймджемы - это не только состязания разработчиков, но и ключевые ивенты в нашем
             сообществе.
@@ -156,28 +156,31 @@
         </div>
 
         <div class="w-full mt-4">
-          <app-button preset="full blue t4" routeLink="/gamejams">архив</app-button>
+          <app-button preset="full blue t4 scale" routeLink="/gamejams">архив</app-button>
         </div>
       </b>
     </div>
   </app-block>
 
   <!-- DONATION BLOCK -->
-
   <div class="font-main font-bold flex justify-center mbe-5 mbs-5 md:mx-[4vw] bg-[url(/donation_bg.png)]" id="donation">
     <div
       class="w-full border-10 3xl:border-20 border-pink-500 border-double px-4 sm:px-6 lg:px-8"
     >
-      <div class="w-full mx-1">
+      <div class="w-full mx-1 text-center">
           <div class="leading-none text-[30vw] md:text-[20vw] text-center text-[#000555]">ДОНАТ</div>
 
-          <app-block margin="mx-[1vw]">
-            <div class="text-pink-500 text-4xl md:text-5xl xl:text-6xl 3xl:text-8xl text-center m-3">
+          <app-block margin="md:mx-[1vw]">
+            <div class="text-pink-500 text-4xl md:text-5xl xl:text-6xl 3xl:text-8xl m-3">
               <u>Поддержите проект рублем</u>
             </div>
-            <div class="text-2xl md:text-2xl xl:text-4xl 3xl:text-7xl md:text-center m-3 mb-6">
+            <div class="text-2xl md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl leading-none">
               <div class="border-b-4 pb-4 mb-4 border-pink-400">
-                OknoExclusive - это лучший способ поддержать все наши проекты - подписка на Boosty, дающая
+                OknoExclusive - это лучший способ поддержать все наши проекты - подписка на
+
+                <a href="https://www.donationalerts.com/r/oknogmdv" target="_blank" class="inline-block transition-all duration-100 hover:scale-102 hover:cursor-pointer text-orange-500">
+                  Boosty
+                </a>, дающая
                 доступ к эксклюзивному контенту и приватному Telegram-чату, где мы делимся всеми инсайдами
                 наших проектов.
               </div>
@@ -188,24 +191,14 @@
               </div>
 
               <div class="mb-4">
-                Если вы хотите сделать единоразовый донат - наш Donation Alerts к вашим услугам
-              </div>
-
-              <div class="flex flex-col gap-y-4 items-center">
-                <app-button
-                  preset="full pinkalt2 t4"
-                  link="https://www.donationalerts.com/r/oknogmdv"
-                  class="w-[90%]"
-                >
-                  donation alerts
-                </app-button>
-                <app-button preset="full pinkalt2 t4" link="https://boosty.to/oknoboosty" class="w-[90%]">
-                  boosty
-                </app-button>
+                Если вы хотите сделать единоразовый донат - наш
+                <a href="https://www.donationalerts.com/r/oknogmdv" target="_blank" class="inline-block transition-all duration-100 hover:scale-102 hover:cursor-pointer text-orange-500">
+                  Donation Alerts
+                </a>
+                к вашим услугам
               </div>
             </div>
           </app-block>
-
           <br />
       </div>
     </div>
@@ -215,7 +208,7 @@
   <app-block margin="md:mx-[4vw]" id="contribute">
     <div class="font-main text-2xl md:text-4xl 2xl:5xl md:text-center text-[#000555] mb-4">
       <b>
-        <div class="font-main text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl 3xl:text-9xl text-[#000555] text-center mb-5 mt-5">
+        <div class="font-main text-[9cqw] text-[#000555] text-center mb-5 mt-5 leading-none">
           КОНТРИБЬЮТЕРАМ
         </div>
 
@@ -223,13 +216,65 @@
           НАМ НУЖНЫ РАЗРАБОТЧИКИ ДЛЯ НАШИХ ПРОЕКТОВ
         </div>
 
-        <div class="text-3xl md:text-4xl 3xl:text-5xl mb-8">
+        <div class="text-2xl md:text-xl xl:text-2xl 2xl:text-3xl 3xl:text-5xl leading-none mb-8">
           <div class="border-b-4 pb-4 mb-4 border-pink-400">
-            Нам нужны фронтед разработчики на Angular и Asp.Net разработчики для бекенда.
+            Окновебу требуются фронтенд разработчики на Angular и Asp.Net разработчики для бекенда.
           </div>
           <div class="border-b-4 pb-4 mb-4 border-pink-400">
             Также, если вы бекенд разработчик на Go либо Rust, то вы также можете принять участие в
-            наших проектах.
+            наших проектах. Например, нашем в разработке нашего телеграм бота.
+          </div>
+        </div>
+      </b>
+    </div>
+  </app-block>
+
+  <!-- CONTRIBUTERS CREDITS BLOCK -->
+  <app-block margin="md:mx-[4vw]" id="contributers">
+    <div class="font-main text-2xl md:text-4xl 2xl:5xl md:text-center text-[#000555] mb-4">
+      <b>
+        <div class="font-main text-[12cqw] md:text-[9cqw] text-[#000555] text-center mb-5 mt-5 leading-none">
+          КОНТРИБЬЮТЕРЫ
+        </div>
+
+        <div class="text-2xl md:text-5xl 3xl:text-6xl border-b-4 pb-4 mb-4 border-pink-400 text-center">
+          НАШИ ПРОЕКТЫ ПОЛНОСТЬЮ РАЗРАБАТЫВАЮТСЯ СИЛАМИ ПЕРЕЧИСЛЕННЫХ ЛЮДЕЙ
+        </div>
+
+        <div class="text-center text-3xl md:text-3xl xl:text-4xl 2xl:text-5xl 3xl:text-6xl leading-none mb-8">
+          <div class="border-b-4 pb-2 pt-2 border-pink-400">
+            <u>yosh aka destructive_crab</u>
+            <div class="text-2xl md:text-3xl mt-2">
+              design
+              <br>
+              oknoweb frontned
+              <br>
+              oknoweb backend
+            </div>
+          </div>
+          <div class="border-b-4 pb-2 pt-2 border-pink-400">
+            <u>stopmind</u>
+              <div class="text-2xl md:text-3xl mt-2">
+              OknoServant
+            </div>
+          </div>
+          <div class="border-b-4 pb-2 pt-2 border-pink-400">
+            <u>will4ka</u>
+              <div class="text-2xl md:text-3xl mt-2">
+              oknoweb frontend
+            </div>
+          </div>
+          <div class="border-b-4 pb-2 pt-2 border-pink-400">
+            <u>Starvek</u>
+              <div class="text-2xl md:text-3xl mt-2">
+              oknoweb frontend
+            </div>
+          </div>
+          <div class="">
+            <u>kirk1448</u>
+            <div class="text-2xl md:text-3xl mt-2">
+              3d gifs
+            </div>
           </div>
         </div>
       </b>

@@ -25,6 +25,7 @@ export class Button {
   ngOnInit() {
     let textClasses: string[] = ['text-3xl', 'md:text-4xl'];
     let widthClasses: string[] = [];
+    let otherClasses: string[] = [];
 
     let parts: string[] = this.preset.split(' ');
 
@@ -49,11 +50,11 @@ export class Button {
 
         case 'pinkalt3':
           this.color =
-            'bg-pink-500 hover:bg-pink-600 text-white border-4 border-b-8 border-r-8 border-pink-500 hover:border-pink-600';
+            'bg-pink-500 hover:bg-pink-600 text-white border-b-8 border-r-8 border-pink-500 hover:border-pink-600 transition-all duration-100 hover:scale-101';
           break;
         case 'blue':
           this.color =
-            'font-bold bg-white text-blue-700 border-4 border-b-8 border-r-8 3xl:border-8 3xl:border-b-12 border-blue-700 hover:bg-blue-700 hover:text-white active:text-white active:bg-blue-800 active:border-blue-800';
+            'font-bold bg-white text-blue-700 border-5 border-blue-700 hover:bg-blue-700 hover:text-white active:text-white active:bg-blue-800 active:border-blue-800';
           break;
 
         case 'bluealt':
@@ -61,7 +62,7 @@ export class Button {
           break;
 
         case 'bluealt2':
-          this.color = 'font-bold bg-blue-600 hover:bg-blue-500 text-white active:bg-blue-700';
+          this.color = 'font-bold bg-blue-600 hover:bg-blue-500 text-white active:bg-blue-700 border-2 border-blue-600 active:border-blue-700';
           break;
 
         case 'green':
@@ -81,7 +82,7 @@ export class Button {
           break;
 
         case 't1':
-          textClasses = ['text-2xl', 'md:text-3xl', '3xl:text-4xl'];
+          textClasses = ['text-sm', 'md:text-xl', 'xl:text-2xl', '3xl:text-4xl'];
           break;
 
         case 't2':
@@ -103,6 +104,9 @@ export class Button {
         case 'tvw':
           textClasses = ['text-[2vw]', 'md:text-[2vw]', '3xl:text-[2vw]'];
           break;
+        case 'scale':
+          otherClasses.push("transition-all duration-100 hover:scale-101")
+          break;
       }
     }
 
@@ -113,6 +117,7 @@ export class Button {
       this.color,
       ...widthClasses,
       ...textClasses,
+      ...otherClasses,
       'hover:cursor-pointer',
     ];
 
