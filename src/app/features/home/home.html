@@ -1,4 +1,40 @@
 <app-sidebar [navigation]="navigation">
+
+  <!-- ЧРЕВАТЫЙ ДЖЕМ-->
+  <div class="font-chrevo flex justify-center mbe-5 mbs-5 md:mx-[4vw] bg-[url(/chrevo_bg.png)] bg-center" id="jam">
+    <div
+      class="w-full border-10 3xl:border-20 border-black border-double px-4 sm:px-6 lg:px-8"
+    >
+        <div class="flex justify-center  mt-4">
+          <img
+            class="w-full md:w-3/5 object-contain object-center"
+            src="chrevo_cover_alpha.png"
+            alt="ЧРЕВАТЫЙ ДЖЕМ"
+          />
+        </div>
+
+        <div class="font-bold text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl text-black text-center mt-4">
+          31 ОКТЯБРЯ - 1 НОЯБРЯ
+        </div>
+
+        <div class="font-bold text-red-600 text-2xl md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl leading-none text-center mt-4">
+            Сезон страха и ужаса подходит к своей кульминации <br>
+            Десятки обезумевших от осенней хандры разработчиков столкнуться в смертельной схватке за звание
+        </div>
+        <div style="font-size: 40px;" class="font-bold text-center leading-none mt-4"> <b>ЛУЧШЕГО ИЗ ЛУЧШИХ</b></div>
+        <div style="font-size: 16px; color:#CF0A3F; margin-bottom:10px" class="text-center">
+          <div class="font-bold mb-4 text-black">
+            (схватка на самом деле не смертельная вы не умрете правда)
+          </div>
+
+          <app-button preset="full scale t4 black" link="" class="mb-2 h-40"
+            ><b>ВСТУПАЙ</b></app-button
+          >
+        </div>
+
+    </div>
+  </div>
+
   <!-- MAIN BLOCK -->
   <app-block margin="md:mx-[4vw]" id="about">
     <div class="flex justify-center">
@@ -80,7 +116,7 @@
           </a>
         </div>
         <div class="w-full justify-center">
-          <a hreaf="https://www.donationalerts.com/r/oknogmdv" target="_blank">
+          <a href="https://www.donationalerts.com/r/oknogmdv" target="_blank">
             <img
               class="w-full object-contain object-center transition-transform duration-150 hover:scale-110 hover:cursor-pointer"
               src="donation_alerts.webp"
@@ -174,11 +210,11 @@
             <div class="text-pink-500 text-4xl md:text-5xl xl:text-6xl 3xl:text-8xl m-3">
               <u>Поддержите проект рублем</u>
             </div>
-            <div class="text-2xl md:text-2xl xl:text-3xl 2xl:text-4xl 3xl:text-5xl leading-none">
+            <div class="text-2xl md:text-3xl xl:text-4xl 2xl:text-4xl 3xl:text-5xl leading-none">
               <div class="border-b-4 pb-4 mb-4 border-pink-400">
                 OknoExclusive - это лучший способ поддержать все наши проекты - подписка на
 
-                <a href="https://www.donationalerts.com/r/oknogmdv" target="_blank" class="inline-block transition-all duration-100 hover:scale-102 hover:cursor-pointer text-orange-500">
+                <a href="https://boosty.to/oknoboosty" target="_blank" class="inline-block transition-all duration-100 hover:scale-102 hover:cursor-pointer text-orange-500">
                   Boosty
                 </a>, дающая
                 доступ к эксклюзивному контенту и приватному Telegram-чату, где мы делимся всеми инсайдами
@@ -208,7 +244,7 @@
   <app-block margin="md:mx-[4vw]" id="contribute">
     <div class="font-main text-2xl md:text-4xl 2xl:5xl md:text-center text-[#000555] mb-4">
       <b>
-        <div class="font-main text-[9cqw] text-[#000555] text-center mb-5 mt-5 leading-none">
+        <div class="font-main text-[11cqw] md:text-5xl xl:text-6xl 2xl:text-7xl text-[#000555] text-center mb-5 mt-5 leading-none">
           КОНТРИБЬЮТЕРАМ
         </div>
 
@@ -233,7 +269,7 @@
   <app-block margin="md:mx-[4vw]" id="contributers">
     <div class="font-main text-2xl md:text-4xl 2xl:5xl md:text-center text-[#000555] mb-4">
       <b>
-        <div class="font-main text-[12cqw] md:text-[9cqw] text-[#000555] text-center mb-5 mt-5 leading-none">
+        <div class="font-main text-[11cqw] md:text-5xl xl:text-6xl 2xl:text-7xl text-[#000555] text-center mb-5 mt-5 leading-none">
           КОНТРИБЬЮТЕРЫ
         </div>
 
@@ -267,7 +303,7 @@
               oknoweb frontend
             </div>
           </div>
-          <div class="">
+          <div class="pt-2">
             <a class="text-blue-600">kirk1448</a>
             <div class="text-2xl md:text-3xl mt-2">
               3d gifs

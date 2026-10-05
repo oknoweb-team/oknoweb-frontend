@@ -36,45 +36,45 @@ export class Button {
           break;
 
         case 'pink':
-          this.color = 'bg-pink-400 hover:bg-pink-500 active:bg-pink-600 text-pink-500 text-white';
+          this.color = 'font-main bg-pink-400 hover:bg-pink-500 active:bg-pink-600 text-pink-500 text-white';
           break;
 
         case 'pinkalt':
-          this.color = 'bg-pink-500 hover:bg-pink-400 active:bg-pink-600 text-white';
+          this.color = 'font-main bg-pink-500 hover:bg-pink-400 active:bg-pink-600 text-white';
           break;
 
         case 'pinkalt2':
           this.color =
-            'bg-white hover:bg-pink-500 text-pink-500 hover:text-white border-4 border-b-8 border-r-8 border-pink-500';
+            'font-main bg-white hover:bg-pink-500 text-pink-500 hover:text-white border-4 border-b-8 border-r-8 border-pink-500';
           break;
 
         case 'pinkalt3':
           this.color =
-            'bg-pink-500 hover:bg-pink-600 text-white border-b-8 border-r-8 border-pink-500 hover:border-pink-600 transition-all duration-100 hover:scale-101';
+            'font-main bg-pink-500 hover:bg-pink-600 text-white border-b-8 border-r-8 border-pink-500 hover:border-pink-600 transition-all duration-100 hover:scale-101';
           break;
         case 'blue':
           this.color =
-            'font-bold bg-white text-blue-700 border-5 border-blue-700 hover:bg-blue-700 hover:text-white active:text-white active:bg-blue-800 active:border-blue-800';
+            'font-main font-bold bg-white text-blue-700 border-5 border-blue-700 hover:bg-blue-700 hover:text-white active:text-white active:bg-blue-800 active:border-blue-800';
           break;
 
         case 'bluealt':
-          this.color = 'font-bold bg-[#000555] border-5 hover:bg-blue-400 text-white active:bg-blue-700';
+          this.color = 'font-main font-bold bg-[#000555] border-5 hover:bg-blue-400 text-white active:bg-blue-700';
           break;
 
         case 'bluealt2':
-          this.color = 'font-bold bg-blue-600 hover:bg-blue-500 text-white active:bg-blue-700 border-2 border-blue-600 active:border-blue-700';
+          this.color = 'font-main font-bold bg-blue-600 hover:bg-blue-500 text-white active:bg-blue-700 border-2 border-blue-600 active:border-blue-700';
           break;
 
         case 'green':
-          this.color = "font-bold bg-white hover:bg-green-500 border-4 border-green-500 text-green-500 hover:text-white"
+          this.color = "font-main font-bold bg-white hover:bg-green-500 border-4 border-green-500 text-green-500 hover:text-white"
           break;
 
         case 'red':
-          this.color = "font-bold bg-white hover:bg-red-500 border-4 border-red-500 text-red-500 hover:text-white"
+          this.color = "font-main font-bold bg-white hover:bg-red-500 border-4 border-red-500 text-red-500 hover:text-white"
           break;
 
         case 'black':
-          this.color = "font-bold bg-white hover:bg-black border-4 border-black text-black hover:text-white"
+          this.color = "font-chrevo bg-black hover:bg-red-600 border-4 border-black text-white hover:text-white"
           break;
 
         case 't0':
@@ -112,7 +112,6 @@ export class Button {
 
     this.classes = [
       'items-center',
-      'font-main',
       'h-full',
       this.color,
       ...widthClasses,
