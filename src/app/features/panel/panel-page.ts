@@ -9,9 +9,8 @@ export abstract class PanelPage {
 
   protected abstract validationPassed(): void;
 
-  ngOnInit()
-  {
-    this.panelService.validateLogin().subscribe({
+  ngOnInit() {
+    this.panelService.checkLogin().subscribe({
       next: () => {
         this.validationPassed();
       },
