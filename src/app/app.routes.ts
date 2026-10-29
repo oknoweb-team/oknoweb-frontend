@@ -13,11 +13,13 @@ import { ManifestPrelude } from './manifest-prelude/manifest-prelude';
 import { GamejamsPanel } from './features/panel/gamejams/gamejams-panel/gamejams-panel';
 import { GamejamsPage } from './features/gamejams-page/gamejams-page';
 import { CommunityContentEditor } from './features/panel/community-content-editor/community-content-editor';
+import { Carnival } from './features/carnival/carnival';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
   { path: 'home', component: Home },
+  { path: 'carnival', component: Carnival },
   { path: 'manifest-prelude', component: ManifestPrelude },
   { path: 'manifest', component: Manifest },
   {
