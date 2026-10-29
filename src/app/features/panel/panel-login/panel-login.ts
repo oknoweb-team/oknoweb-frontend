@@ -20,7 +20,7 @@ export class PanelLogin {
   private router = inject(Router);
   private panelService = inject(PanelService);
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(@Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit() {
     this.document.body.classList.add('min-h-screen');
@@ -34,11 +34,9 @@ export class PanelLogin {
   }
 
   login() {
-    this.panelService.validateUser(this.username, this.password).subscribe({
-      next: () => {
-        localStorage.setItem('admin-logged', 'true');
-        localStorage.setItem('admin_username', this.username);
-        localStorage.setItem('admin_password', this.password);
+    this.panelService.login(this.username, this.password).subscribe({
+      next: (info) => {
+        localStorage.setItem('is-admin', info.admin ? 'true' : 'false')
 
         this.router.navigate(['/panel']);
       },
