@@ -12,7 +12,7 @@ export class Carnival {
 
   ngAfterViewInit() {
     const script = document.createElement('script');
-    script.src = 'carnival/Carnival/Carnival.loader.js';
+    script.src = 'carnival/Build/Build0.7_Web.loader.js';
     script.onload = () => {
       (window as any).createUnityInstance(this.canvas.nativeElement, {
         dataUrl: 'carnival/Build/Build0.7_Web.data',
