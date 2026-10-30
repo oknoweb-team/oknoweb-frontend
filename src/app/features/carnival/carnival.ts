@@ -1,9 +1,11 @@
 import { DecimalPipe } from '@angular/common';
+import { NgZone } from '@angular/core';
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Block } from '../../shared/components/block/block';
 
 @Component({
   selector: 'app-carnival',
-  imports: [DecimalPipe],
+  imports: [DecimalPipe, Block],
   templateUrl: './carnival.html',
   styles: [`canvas { width: 100%; height: 100%; display: block; }`]
 })
@@ -13,6 +15,8 @@ export class Carnival {
 
   progress = 0;
   isFullscreen = false;
+
+  constructor(private zone: NgZone) {}
 
   ngAfterViewInit() {
     const script = document.createElement('script');
@@ -24,7 +28,7 @@ export class Carnival {
           frameworkUrl: 'carnival/Build/Build0.8_Web.framework.js',
           codeUrl:      'carnival/Build/Build0.8_Web.wasm',
         },
-        (p: number) => (this.progress = p)
+        (p: number) => this.zone.run(() => this.progress = p)
       );
     };
     document.body.appendChild(script);

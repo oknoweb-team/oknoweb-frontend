@@ -1,14 +1,19 @@
-<div class="justify-center h-full">
-  <canvas #canvas id="unity-canvas"></canvas>
+<div class="justify-center p-20">
+  <app-block>
+    <canvas #canvas id="unity-canvas"></canvas>
+  </app-block>
   @if (progress < 1) {
     <div class="font-main absolute inset-0 flex flex-col items-center justify-center bg-black text-white">
       <p class="mb-3 text-sm opacity-80">Loading… {{ progress * 100 | number:'1.0-0' }}%</p>
       <div class="w-2/3 h-2 bg-white/20 rounded overflow-hidden">
-        <div class="h-full bg-green-500 transition-[width] duration-200"
+        <div class="h-full bg-blue-500 transition-[width] duration-200"
              [style.width.%]="progress * 100"></div>
       </div>
     </div>
   }
+</div>
+
+
   <button
           (click)="toggleFullscreen()"
           class="absolute bottom-3 right-3 px-3.5 py-2 text-sm text-white
@@ -16,5 +21,4 @@
                  rounded-md cursor-pointer transition-colors"
         >
           {{ isFullscreen ? '✕ Exit' : '⛶ Fullscreen' }}
-        </button>
-</div>
+  </button>

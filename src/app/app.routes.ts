@@ -14,12 +14,13 @@ import { GamejamsPanel } from './features/panel/gamejams/gamejams-panel/gamejams
 import { GamejamsPage } from './features/gamejams-page/gamejams-page';
 import { CommunityContentEditor } from './features/panel/community-content-editor/community-content-editor';
 import { Carnival } from './features/carnival/carnival';
+import { CarnivalPage } from './features/carnival-page/carnival-page';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
   { path: 'home', component: Home },
-  { path: 'carnival', component: Carnival },
+  { path: 'carnival', component: CarnivalPage },
   { path: 'manifest-prelude', component: ManifestPrelude },
   { path: 'manifest', component: Manifest },
   {
