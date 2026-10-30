@@ -12,7 +12,6 @@ import {
   selector: 'app-carnival',
   standalone: true,
   imports: [DecimalPipe, Block],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './carnival.html',
   styles: [`canvas { width: 100%; height: 100%; display: block; }`],
   host: {
