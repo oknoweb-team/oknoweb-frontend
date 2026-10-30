@@ -8,8 +8,8 @@
     <title>Unity Web Player | DigitalMeetup</title>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=1280 height=720 tabindex="-1" style="width: 1280px; height: 720px; background: #231F20"></canvas>
-    <script src="Build/Build0.8_Web.loader.js"></script>
+    <canvas id="unity-canvas" width=1670 height=939 tabindex="-1" style="width: 1670px; height: 939px; background: #231F20"></canvas>
+    <script src="Build/Build0.9_Web.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -29,9 +29,9 @@
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
         arguments: [],
-        dataUrl: "Build/Build0.8_Web.data",
-        frameworkUrl: "Build/Build0.8_Web.framework.js",
-        codeUrl: "Build/Build0.8_Web.wasm",
+        dataUrl: "Build/Build0.9_Web.data",
+        frameworkUrl: "Build/Build0.9_Web.framework.js",
+        codeUrl: "Build/Build0.9_Web.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DigitalWaste!",
         productName: "DigitalMeetup",
