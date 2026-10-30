@@ -6,6 +6,7 @@ import {
   ViewChild,
   NgZone,
   ChangeDetectionStrategy,
+  signal,
 } from '@angular/core';
 
 @Component({
@@ -13,7 +14,7 @@ import {
   standalone: true,
   imports: [DecimalPipe, Block],
   templateUrl: './carnival.html',
-  styles: [`canvas { width: 100%; height: 100%; display: block; }`],
+  styles: [`canvas { width: 100%; height: 100%; display: block; object-fit:contain; }`],
   host: {
     class: 'block w-full h-full',
   },
@@ -22,7 +23,7 @@ export class Carnival {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
   @ViewChild('container', { static: true }) container!: ElementRef<HTMLDivElement>;
 
-  progress = 0;
+  progress = signal(0);
   isFullscreen = false;
 
   constructor(private zone: NgZone) {}
@@ -37,7 +38,7 @@ export class Carnival {
           frameworkUrl: 'carnival/Build/Build0.8_Web.framework.js',
           codeUrl:      'carnival/Build/Build0.8_Web.wasm',
         },
-        (p: number) => this.zone.run(() => this.progress = p)
+        (p: number) => this.zone.run(() => this.progress.set(p))
       );
     };
     document.body.appendChild(script);
