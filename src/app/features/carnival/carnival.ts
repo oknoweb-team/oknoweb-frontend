@@ -30,13 +30,13 @@ export class Carnival {
 
   ngAfterViewInit() {
     const script = document.createElement('script');
-    script.src = 'carnival/Build/Build0.8_Web.loader.js';
+    script.src = 'carnival/Build/Build0.9_Web.loader.js';
     script.onload = () => {
       (window as any).createUnityInstance(
         this.canvas.nativeElement, {
-          dataUrl:      'carnival/Build/Build0.8_Web.data',
-          frameworkUrl: 'carnival/Build/Build0.8_Web.framework.js',
-          codeUrl:      'carnival/Build/Build0.8_Web.wasm',
+          dataUrl:      'carnival/Build/Build0.9_Web.data',
+          frameworkUrl: 'carnival/Build/Build0.9_Web.framework.js',
+          codeUrl:      'carnival/Build/Build0.9_Web.wasm',
         },
         (p: number) => this.zone.run(() => this.progress.set(p))
       );
