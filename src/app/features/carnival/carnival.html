@@ -1,6 +1,4 @@
-<div class="block w-full h-full items-center justify-center bg-black">
-  <canvas #canvas id="unity-canvas"></canvas>
-
+<div class="w-full h-full bg-black">
   @if (progress() < 1) {
     <div class="font-main absolute inset-0 flex flex-col items-center justify-center bg-black text-white">
       <p class="mb-3 text-sm opacity-80">Loading… {{ progress() * 100 | number:'1.0-0' }}%</p>
@@ -9,5 +7,8 @@
           [style.width.%]="progress() * 100"></div>
         </div>
     </div>
+  }
+  @else {
+    <canvas #canvas id="unity-canvas"></canvas>
   }
 </div>
