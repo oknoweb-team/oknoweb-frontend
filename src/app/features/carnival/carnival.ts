@@ -12,6 +12,7 @@ export class Carnival {
   @ViewChild('container', { static: true }) container!: ElementRef<HTMLDivElement>;
 
   progress = 0;
+  isFullscreen = false;
 
   ngAfterViewInit() {
     const script = document.createElement('script');
@@ -30,11 +31,7 @@ export class Carnival {
   }
 
   toggleFullscreen() {
-      const el = this.container.nativeElement;
-      if (!document.fullscreenElement) {
-        el.requestFullscreen();
-      } else {
-        document.exitFullscreen();
-      }
-    }
+    const el = this.container.nativeElement;
+    document.fullscreenElement ? document.exitFullscreen() : el.requestFullscreen();
+  }
 }
