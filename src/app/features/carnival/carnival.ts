@@ -1,13 +1,23 @@
 import { DecimalPipe } from '@angular/common';
-import { NgZone } from '@angular/core';
-import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Block } from '../../shared/components/block/block';
+import {
+  Component,
+  ElementRef,
+  ViewChild,
+  NgZone,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 @Component({
   selector: 'app-carnival',
+  standalone: true,
   imports: [DecimalPipe, Block],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './carnival.html',
-  styles: [`canvas { width: 100%; height: 100%; display: block; }`]
+  styles: [`canvas { width: 100%; height: 100%; display: block; }`],
+  host: {
+    class: 'block w-full h-full',
+  },
 })
 export class Carnival {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
