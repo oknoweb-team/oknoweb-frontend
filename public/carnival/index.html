@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <script src="livekit-client.umd.js"></script>
-    <script src="unity-voice.js"></script>
+    <script>
+    (function () {
+      window.__blockPointerLock = false;
+      var orig = Element.prototype.requestPointerLock;
+      Element.prototype.requestPointerLock = function () {
+        console.log('[PL] requestPointerLock, blocked=' + window.__blockPointerLock);
+        if (window.__blockPointerLock) return Promise.resolve();
+        return orig.apply(this, arguments);
+      };
+      document.addEventListener('pointerlockchange', function () {
+        var locked = !!document.pointerLockElement;
+        console.log('[PL] pointerlockchange locked=' + locked + ' blocked=' + window.__blockPointerLock);
+        if (window.__blockPointerLock && locked) document.exitPointerLock();
+      });
+    })();
+    </script>
+      <script src="livekit-client.umd.js"></script>
+      <script src="unity-voice.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity Web Player | DigitalMeetup</title>
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width=1670 height=939 tabindex="-1" style="width: 1670px; height: 939px; background: #231F20"></canvas>
+    <canvas id="unity-canvas" width=1670 height=939 tabindex="-1" style="width: 1670px; height: 939px; background: #000000"></canvas>
     <script src="Build/Build0.9_Web.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
