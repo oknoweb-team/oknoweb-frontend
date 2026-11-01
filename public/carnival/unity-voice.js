@@ -1,32 +1,24 @@
-/*
- * unity-voice.js  -  browser side of the proximity voice chat.
- *
- * Load as a normal <script> in your WebGL template, AFTER the livekit-client UMD file:
- *   <script src="livekit-client.umd.js"></script>
- *   <script src="unity-voice.js"></script>
- *
- * Needs livekit-client v2.x (uses room.remoteParticipants / participant.trackPublications).
- * Unity talks to this through Assets/Plugins/WebGL/UnityVoice.jslib.
- *
- * Audio path per speaker:
- *   LiveKit audio track -> MediaStream -> GainNode (distance volume) -> StereoPanner (left/right) -> master -> speakers
- */
 (function () {
   'use strict';
 
   var STATE_IDLE = 0, STATE_CONNECTING = 1, STATE_CONNECTED = 2, STATE_FAILED = 3;
+
+  var RECONCILE_MS = 1000;
+  var RETRY_MS = 3000;
 
   var room = null;
   var state = STATE_IDLE;
   var ctx = null;
   var master = null;
   var masterVol = 1;
-  var peers = new Map();        // identity -> { el, src, gain, pan }
-  var wanted = new Set();       // identities (slots) we currently want to hear
+  var peers = new Map();
+  var wanted = new Set();
+  var requested = new Map();
+  var reconcileTimer = null;
   var desiredMic = false;
-  var micStatus = 0;           // 0 off, 1 starting (waiting for permission), 2 on, 3 blocked/failed
+  var micStatus = 0;
   var micChain = Promise.resolve();
-  var connectToken = 0;         // invalidates stale async connects
+  var connectToken = 0;
   var inited = false;
 
   function log() {
@@ -35,7 +27,6 @@
     console.log.apply(console, a);
   }
 
-  // ---------- audio context ----------
 
   function ensureCtx() {
     if (!ctx) {
@@ -53,7 +44,6 @@
     if (inited) return;
     inited = true;
 
-    // Browsers keep audio suspended until the user interacts with the page.
     var resume = function () {
       if (ctx && ctx.state === 'suspended') ctx.resume().catch(function () {});
     };
@@ -64,7 +54,6 @@
     try { ensureCtx(); } catch (e) { console.warn('[Voice] AudioContext unavailable', e); }
   }
 
-  // ---------- peers (remote speakers) ----------
 
   function attach(track, participant) {
     if (!track || track.kind !== 'audio') return;
@@ -74,8 +63,6 @@
     var c = ensureCtx();
     var stream = new MediaStream([track.mediaStreamTrack]);
 
-    // Chrome only delivers remote WebRTC audio to Web Audio if the stream is also
-    // attached to a media element. Muted, so it adds no sound by itself.
     var el = new Audio();
     el.srcObject = stream;
     el.muted = true;
@@ -85,14 +72,14 @@
 
     var src = c.createMediaStreamSource(stream);
     var gain = c.createGain();
-    gain.gain.value = 0;                       // silent until Unity sends a distance
+    gain.gain.value = 0;
     var pan = c.createStereoPanner ? c.createStereoPanner() : null;
 
     src.connect(gain);
     if (pan) { gain.connect(pan); pan.connect(master); }
     else { gain.connect(master); }
 
-    peers.set(id, { el: el, src: src, gain: gain, pan: pan });
+    peers.set(id, { el: el, src: src, gain: gain, pan: pan, track: track });
   }
 
   function detach(id) {
@@ -109,14 +96,27 @@
     Array.from(peers.keys()).forEach(detach);
   }
 
-  // ---------- subscriptions ----------
 
   function applySub(pub, participant) {
     if (!pub || pub.kind !== 'audio') return;
+
     var want = wanted.has(participant.identity);
+    var sid = pub.trackSid;
+    var actual = !!pub.isSubscribed;
+    var now = Date.now();
+    var last = requested.get(sid);
+
+    if (last && last.v === want) {
+      if (actual === want) return;
+      if (now - last.t < RETRY_MS) return;
+    }
+
     try {
-      if (want !== !!pub.isSubscribed) pub.setSubscribed(want);
-    } catch (e) { /* publication may be mid-update; next event retries */ }
+      pub.setSubscribed(want);
+      requested.set(sid, { v: want, t: now });
+    } catch (e) {
+      requested.delete(sid);
+    }
   }
 
   function applyAllSubs() {
@@ -126,7 +126,17 @@
     });
   }
 
-  // ---------- connect / disconnect ----------
+  function startReconcile() {
+    stopReconcile();
+    reconcileTimer = setInterval(function () {
+      if (room && state === STATE_CONNECTED) applyAllSubs();
+    }, RECONCILE_MS);
+  }
+
+  function stopReconcile() {
+    if (reconcileTimer) { clearInterval(reconcileTimer); reconcileTimer = null; }
+  }
+
 
   async function connect(url, token) {
     var LK = window.LivekitClient;
@@ -152,18 +162,33 @@
     });
 
     r.on(LK.RoomEvent.TrackPublished, function (pub, p) { applySub(pub, p); });
+    r.on(LK.RoomEvent.TrackUnpublished, function (pub) { requested.delete(pub.trackSid); });
     r.on(LK.RoomEvent.ParticipantConnected, function (p) {
       p.trackPublications.forEach(function (pub) { applySub(pub, p); });
     });
-    r.on(LK.RoomEvent.TrackSubscribed, function (track, pub, p) { attach(track, p); });
-    r.on(LK.RoomEvent.TrackUnsubscribed, function (track, pub, p) { detach(p.identity); });
-    r.on(LK.RoomEvent.ParticipantDisconnected, function (p) { detach(p.identity); });
+    r.on(LK.RoomEvent.TrackSubscribed, function (track, pub, p) {
+      attach(track, p);
+      requested.set(pub.trackSid, { v: true, t: Date.now() });
+      applySub(pub, p);
+    });
+    r.on(LK.RoomEvent.TrackUnsubscribed, function (track, pub, p) {
+      var peer = peers.get(p.identity);
+      if (peer && peer.track === track) detach(p.identity);
+      requested.delete(pub.trackSid);
+      applySub(pub, p);
+    });
+    r.on(LK.RoomEvent.ParticipantDisconnected, function (p) {
+      detach(p.identity);
+      p.trackPublications.forEach(function (pub) { requested.delete(pub.trackSid); });
+    });
     r.on(LK.RoomEvent.Disconnected, function () {
-      if (my !== connectToken) return;       // we disconnected on purpose
+      if (my !== connectToken) return;
       log('disconnected by server/network');
+      stopReconcile();
+      requested.clear();
       cleanupPeers();
       room = null;
-      state = STATE_FAILED;                  // Unity retries
+      state = STATE_FAILED;
     });
 
     room = r;
@@ -173,6 +198,7 @@
       state = STATE_CONNECTED;
       log('connected as', r.localParticipant.identity);
       applyAllSubs();
+      startReconcile();
       if (desiredMic) applyMic();
     } catch (e) {
       console.error('[Voice] connect failed:', e);
@@ -182,13 +208,14 @@
 
   function disconnect() {
     connectToken++;
+    stopReconcile();
     if (room) { try { room.disconnect(); } catch (e) {} room = null; }
+    requested.clear();
     cleanupPeers();
     micStatus = 0;
     state = STATE_IDLE;
   }
 
-  // ---------- microphone ----------
 
   function setMic(on) {
     desiredMic = !!on;
@@ -209,14 +236,12 @@
     });
   }
 
-  // ---------- called from Unity ----------
 
   function setSubscriptions(ids) {
-    wanted = new Set(ids.map(function (x) { return String(Math.round(x)); }));
+    wanted = new Set(Array.prototype.map.call(ids, function (x) { return String(Math.round(x)); }));
     applyAllSubs();
   }
 
-  // arr = [slot, gain, pan, slot, gain, pan, ...]; peers not listed fade to silence
   function setPeers(arr, count) {
     if (!ctx) return;
     var t = ctx.currentTime;
@@ -249,7 +274,6 @@
     return p && p.isSpeaking ? 1 : 0;
   }
 
-  // slots (identities) of all remote players who are talking right now
   function getSpeakers() {
     var out = [];
     if (!room) return out;
