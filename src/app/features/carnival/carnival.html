@@ -1,7 +1,8 @@
 <div class="w-full h-full overflow-hidden bg-black">
+  <div class="text-center text-2xl mt-4 mb-4">карнавал</div>
   @if (progress() < 1) {
     <div class="font-main absolute inset-0 flex flex-col items-center justify-center bg-black text-white">
-      <p class="mb-3 text-sm opacity-80">КАРНАВАЛ…Карнавал…карнавал… {{ progress() * 100 | number:'1.0-0' }}%</p>
+      <p class="mb-3 text-sm opacity-80">КАРНАВАЛ… Карнавал… карнавал… {{ progress() * 100 | number:'1.0-0' }}%</p>
       <div class="w-2/3 h-2 bg-white/20 rounded overflow-hidden">
         <div class="h-full bg-orange-500 transition-[width] duration-200"
           [style.width.%]="progress() * 100"></div>
