@@ -29,6 +29,8 @@ export class Carnival {
 
   async ngAfterViewInit() {
     await this.loadScript('assets/unity-voice.js');
+    await this.loadScript('assets/livekit-client-umd.js');
+
     const script = document.createElement('script');
     script.src = 'assets/Build/Build1.0_Web.loader.js';
     script.onload = () => {
