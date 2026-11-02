@@ -28,8 +28,8 @@ export class Carnival {
   constructor(private zone: NgZone) {}
 
   async ngAfterViewInit() {
-    await this.loadScript('assets/unity-voice.js');
     await this.loadScript('assets/livekit-client-umd.js');
+    await this.loadScript('assets/unity-voice.js');
 
     const script = document.createElement('script');
     script.src = 'assets/Build/Build1.0_Web.loader.js';
