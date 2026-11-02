@@ -27,7 +27,8 @@ export class Carnival {
 
   constructor(private zone: NgZone) {}
 
-  ngAfterViewInit() {
+  async ngAfterViewInit() {
+    await this.loadScript('assets/unity-voice.js');
     const script = document.createElement('script');
     script.src = 'assets/Build/Build1.0_Web.loader.js';
     script.onload = () => {
@@ -41,6 +42,17 @@ export class Carnival {
       );
     };
     document.body.appendChild(script);
+  }
+
+  private loadScript(src: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = false; // Ensure sequential execution
+      script.onload = () => resolve();
+      script.onerror = (e) => reject(e);
+      document.body.appendChild(script);
+    });
   }
 
   toggleFullscreen() {
