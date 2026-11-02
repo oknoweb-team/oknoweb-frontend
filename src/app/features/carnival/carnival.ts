@@ -28,17 +28,17 @@ export class Carnival {
   constructor(private zone: NgZone) {}
 
   async ngAfterViewInit() {
-    await this.loadScript('assets/livekit-client-umd.js');
-    await this.loadScript('assets/unity-voice.js');
+    await this.loadScript('livekit-client.umd.js');
+    await this.loadScript('unity-voice.js');
 
     const script = document.createElement('script');
-    script.src = 'assets/Build/Build1.0_Web.loader.js';
+    script.src = 'Build/Build1.0_Web.loader.js';
     script.onload = () => {
       (window as any).createUnityInstance(
         this.canvas.nativeElement, {
-          dataUrl:      'assets/Build/Build1.0_Web.data',
-          frameworkUrl: 'assets/Build/Build1.0_Web.framework.js',
-          codeUrl:      'assets/Build/Build1.0_Web.wasm',
+          dataUrl:      'Build/Build1.0_Web.data',
+          frameworkUrl: 'Build/Build1.0_Web.framework.js',
+          codeUrl:      'Build/Build1.0_Web.wasm',
         },
         (p: number) => this.zone.run(() => this.progress.set(p))
       );
