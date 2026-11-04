@@ -25,7 +25,7 @@
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas" width=1670 height=939 tabindex="-1" style="width: 1670px; height: 939px; background: #000000"></canvas>
-    <script src="Build/Build1.0_Web.loader.js"></script>
+    <script src="Build/Build1.1_Web.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         var meta = document.createElement('meta');
@@ -44,13 +44,13 @@
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
         arguments: [],
-        dataUrl: "Build/Build1.0_Web.data",
-        frameworkUrl: "Build/Build1.0_Web.framework.js",
-        codeUrl: "Build/Build1.0_Web.wasm",
+        dataUrl: "Build/Build1.1_Web.data",
+        frameworkUrl: "Build/Build1.1_Web.framework.js",
+        codeUrl: "Build/Build1.1_Web.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DigitalWaste!",
         productName: "DigitalMeetup",
-        productVersion: "0.1.0",
+        productVersion: "1.1",
       }).then((unityInstance) => {
       }).catch((message) => {
         alert(message);
