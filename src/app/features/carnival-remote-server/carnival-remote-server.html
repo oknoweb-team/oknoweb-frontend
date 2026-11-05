@@ -1,14 +1,15 @@
-<div class="absolute top-0 left-0 w-full h-full overflow-hidden bg-black">
+<div class="w-screen h-screen overflow-hidden">
   @if (isLoading()) {
-    <div class="font-main absolute inset-0 flex flex-col items-center justify-center bg-black text-white">
-      <p class="mb-3 text-3xl">Загружаем КАРНАВАЛ... Подождите.. пожалуйста</p>
+    <div class="fixed inset-0 z-10 flex items-center justify-center bg-blue-900 text-orange text-xl">
+      загружаем КАРНАВАЛ...
     </div>
   }
+
   <iframe
     [src]="'https://oknocarnival.ru/webgl/index.html' | safe: 'resourceUrl'"
-    width="100%"
-    height="100%"
+    class="border-0 w-full h-full"
+    allowfullscreen="true"
     (load)="onLoaded()"
-    allowfullscreen="true">
+  >
   </iframe>
 </div>

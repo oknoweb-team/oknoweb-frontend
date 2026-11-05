@@ -6,6 +6,7 @@ import { SafePipe } from '../../core/pipes/safe-pipe';
   selector: 'app-carnival-remote-server',
   imports: [SafePipe],
   templateUrl: './carnival-remote-server.html',
+  styles: ""
 })
 export class CarnivalRemoteServer {
   isLoading = signal(true);
@@ -15,8 +16,7 @@ export class CarnivalRemoteServer {
     this.gameUrl = this.sanitizer.bypassSecurityTrustResourceUrl("https://oknocarnival.ru/webgl");
   }
 
-  onLoaded()
-  {
+  onLoaded() {
     this.isLoading.set(false);
   }
 }
