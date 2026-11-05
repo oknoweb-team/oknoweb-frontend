@@ -25,36 +25,25 @@ export class Carnival {
   progress = signal(0);
   isFullscreen = false;
 
-  constructor(private zone: NgZone) {}
+  constructor(private zone: NgZone) { }
 
-  async ngAfterViewInit() {
-    await this.loadScript('livekit-client.umd.js');
-    await this.loadScript('unity-voice.js');
-
+  ngAfterViewInit() {
     const script = document.createElement('script');
-    script.src = 'Build/Build1.1_Web.loader.js';
+    script.src = 'carnival-main.js';
     script.onload = () => {
-      (window as any).createUnityInstance(
-        this.canvas.nativeElement, {
-          dataUrl:      'Build/Build1.1_Web.data',
-          frameworkUrl: 'Build/Build1.1_Web.framework.js',
-          codeUrl:      'Build/Build1.1_Web.wasm',
+      (window as any).loadCarnival(this.canvas.nativeElement, {
+        onProgress: (progress: number) => {
+          this.zone.run(() => this.progress.set(progress))
         },
-        (p: number) => this.zone.run(() => this.progress.set(p))
-      );
+        onSuccess: (instance: any) => {
+          console.log("CARNIVAL LOADED")
+        },
+        onError: (message: string) => {
+          alert(message)
+        }
+      });
     };
     document.body.appendChild(script);
-  }
-
-  private loadScript(src: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-      const script = document.createElement('script');
-      script.src = src;
-      script.async = false; // Ensure sequential execution
-      script.onload = () => resolve();
-      script.onerror = (e) => reject(e);
-      document.body.appendChild(script);
-    });
   }
 
   toggleFullscreen() {
