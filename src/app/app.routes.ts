@@ -13,7 +13,7 @@ import { ManifestPrelude } from './manifest-prelude/manifest-prelude';
 import { GamejamsPanel } from './features/panel/gamejams/gamejams-panel/gamejams-panel';
 import { GamejamsPage } from './features/gamejams-page/gamejams-page';
 import { CommunityContentEditor } from './features/panel/community-content-editor/community-content-editor';
-import { Carnival } from './features/carnival/carnival';
+import { CarnivalRemoteServer } from './features/carnival-remote-server/carnival-remote-server';
 import { CarnivalPage } from './features/carnival-page/carnival-page';
 
 export const routes: Routes = [
@@ -21,6 +21,7 @@ export const routes: Routes = [
 
   { path: 'home', component: Home },
   { path: 'carnival', component: CarnivalPage },
+  { path: 'carnival_test', component: CarnivalRemoteServer },
   { path: 'manifest-prelude', component: ManifestPrelude },
   { path: 'manifest', component: Manifest },
   {
