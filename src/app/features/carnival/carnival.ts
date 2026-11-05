@@ -29,9 +29,9 @@ export class Carnival {
 
   ngAfterViewInit() {
     const script = document.createElement('script');
-    script.src = 'carnival-main.js';
+    script.src = 'https://oknocarnival.ru/webgl/carnival-main.js';
     script.onload = () => {
-      (window as any).loadCarnival(this.canvas.nativeElement, {
+      (window as any).loadCarnival(this.canvas.nativeElement, "https://oknocarnival.ru/webgl", {
         onProgress: (progress: number) => {
           this.zone.run(() => this.progress.set(progress))
         },
