@@ -29,6 +29,7 @@ export class Carnival {
 
   ngAfterViewInit() {
     const script = document.createElement('script');
+    script.crossOrigin = "oknoweb.ru"
     script.src = 'https://oknocarnival.ru/webgl/carnival-main.js';
     script.onload = () => {
       (window as any).loadCarnival(this.canvas.nativeElement, "https://oknocarnival.ru/webgl", {

@@ -22,42 +22,48 @@
           <div class="block font-main font-bold pt-4">
             <button
               routerLink="/home"
-              class="text-black hover:text-blue-500 text-4xl hover:text-5xl hover:cursor-pointer mb-2">
+              class="text-black hover:text-blue-500 text-4xl hover:cursor-pointer mb-2 hover:scale-110 transition-all duration-50 ">
                > ГЛАВНАЯ
             </button>
             <br>
             <button
               routerLink="/submit"
-              class="text-black hover:text-blue-500 text-4xl hover:text-5xl hover:cursor-pointer mb-2">
+              class="text-black hover:text-blue-500 text-4xl hover:cursor-pointer mb-2 hover:scale-110 transition-all duration-50 ">
                > SUBMITНУТЬ
             </button>
             <br>
             <button
               routerLink="/submissions"
-              class="text-black hover:text-blue-500 text-4xl hover:text-5xl hover:cursor-pointer mb-2">
+              class="text-black hover:text-blue-500 text-4xl hover:cursor-pointer mb-2 hover:scale-110 transition-all duration-50 ">
                > САБМИТЫ
             </button>
             <br>
             <button
               routerLink="/manifest-prelude"
-              class="text-black hover:text-pink-500 text-4xl hover:text-5xl hover:cursor-pointer mb-2">
+              class="text-black hover:text-pink-500 text-4xl hover:cursor-pointer mb-2 hover:scale-110 transition-all duration-50 ">
                > МАНИФЕСТ
             </button>
             <br>
             <button
               routerLink="/gamejams"
-              class="text-black hover:text-blue-500 text-4xl hover:text-5xl hover:cursor-pointer mb-2">
+              class="text-black hover:text-blue-500 text-4xl hover:cursor-pointer mb-2 hover:scale-110 transition-all duration-50 ">
                > ДЖЕМЫ
             </button>
           </div>
         </div>
-        <div class="mt-4 mx-4">
-          @for (item of navigation; track $index) {
-            <button (click)="scrollToSection(item[1])" class="text-left font-main font-bold text-black hover:text-blue-500 text-3xl hover:text-4xl hover:cursor-pointer">
-              > {{item[0]}}
-            </button>
 
-            <br>
+        <div class="w-full mt-4">
+          @for (item of navigation; track $index) {
+            <div class="w-full flex justify-left mx-4">
+              <button (click)="scrollToSection(item[1])" class="text-center font-main font-bold text-black hover:text-blue-500 text-3xl hover:scale-105 transition-all duration-50 hover:cursor-pointer">
+                  @if (item[1] == activeId()) {
+                    <div class="text-blue-500"> > {{item[0]}} </div>
+                  }
+                  @else {
+                    {{item[0]}}
+                  }
+              </button>
+            </div>
           }
         </div>
         }
@@ -139,10 +145,17 @@
                 </button>
               </div>
 
+
               <div class="mt-4 mx-4">
                 @for (item of navigation; track $index) {
+                  {{activeId()}}
                   <button (click)="scrollToSection(item[1])" class="font-main font-bold text-black hover:text-blue-500 text-3xl hover:text-4xl hover:cursor-pointer">
-                    {{item[0]}}
+                    @if (item[1] == activeId()) {
+                      <div class="text-blue-500"> {{item[0]}} </div>
+                    }
+                    @else {
+                      {{item[1]}}
+                    }
                   </button>
                   <br>
                 }
