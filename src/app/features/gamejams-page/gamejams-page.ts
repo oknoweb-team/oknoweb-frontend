@@ -41,6 +41,7 @@ export class GamejamsPage {
       }
       this._navigation.set(nav)
       this.isLoading = false;
+      this.navigationUpdated?.next();
     })
   }
 
