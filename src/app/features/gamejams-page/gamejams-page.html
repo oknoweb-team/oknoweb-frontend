@@ -1,4 +1,4 @@
-<app-sidebar [navigation]="navigation()">
+<app-sidebar [navigation]="navigation()" [refreshNavigation]="navigationUpdated">
   <div class="justify-center flex">
     <div
       class="flex full items-center justify-center text-4xl md:text-6xl 3xl:text-9xl font-main font-bold bg-white text-blue-600 pb-2 mt-4"
@@ -16,7 +16,7 @@
   } @for (gamejam of gamejams(); track $index) {
   <app-block margin="md:mx-[2vw]" [id]="gamejam.id">
     <div class="block w-full pt-3 pb-3">
-      <div class="md:flex place-items-center ">
+      <div class="md:flex place-items-center">
         <div class="md:w-2/3">
           <img
             src="{{gamejam.coverLink}}"

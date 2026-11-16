@@ -2,6 +2,7 @@ import { isPlatformBrowser, NgClass, NgTemplateOutlet } from '@angular/common';
 import { afterNextRender, ChangeDetectorRef, Component, ElementRef, Inject, Input, PLATFORM_ID, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Button } from '../button/button';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,6 +20,7 @@ import { Button } from '../button/button';
 })
 export class Sidebar {
   @Input("navigation") public navigation!: [string, string][];
+  @Input("refreshNavigation") public refreshNavigation: Subject<void> | undefined;
 
   public isHorizontal = signal(true);
   public isExpanded = signal(false);
@@ -44,6 +46,16 @@ export class Sidebar {
 
 
   ngAfterContentInit(): void {
+    setTimeout(() => {
+      this.refreshNavigationHtml();
+    }, 0);
+
+    if (this.refreshNavigation != null) {
+      this.refreshNavigation.subscribe(this.refreshNavigationHtml)
+    }
+  }
+
+  private refreshNavigationHtml() {
     if (!isPlatformBrowser(this.platformId)) return;
 
     this.observer = new IntersectionObserver(
@@ -64,10 +76,8 @@ export class Sidebar {
       }
     );
 
-    setTimeout(() => {
-      const projectedElements = this.elRef.nativeElement.querySelectorAll('[id]');
-      projectedElements.forEach((el) => this.observer?.observe(el));
-    }, 0);
+    const projectedElements = this.elRef.nativeElement.querySelectorAll('[id]');
+    projectedElements.forEach((el) => this.observer?.observe(el));
   }
 
   ngOnDestroy(): void {

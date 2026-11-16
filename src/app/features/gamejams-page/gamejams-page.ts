@@ -4,6 +4,7 @@ import { GameJam } from '../../core/models/gamejams.model';
 import { Block } from '../../shared/components/block/block';
 import { Button } from '../../shared/components/button/button';
 import { Sidebar } from '../../shared/components/sidebar/sidebar';
+import { Subject } from "rxjs";
 
 @Component({
   selector: 'app-gamejams-page',
@@ -18,6 +19,7 @@ export class GamejamsPage {
 
   private _navigation = signal<[string, string][]>([]);
   public readonly navigation = this._navigation.asReadonly();
+  public readonly navigationUpdated = new Subject<void>();
 
   private readonly gamejamsService = inject(GameJamsService);
 
