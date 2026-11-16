@@ -20,7 +20,6 @@ import { Subject } from 'rxjs';
 })
 export class Sidebar {
   @Input("navigation") public navigation!: [string, string][];
-  @Input("refreshNavigation") public refreshNavigation: Subject<void> | undefined;
 
   public isHorizontal = signal(true);
   public isExpanded = signal(false);
@@ -46,16 +45,6 @@ export class Sidebar {
 
   ngAfterViewChecked() {
     this.refreshNavigationHtml();
-  }
-
-  ngAfterContentInit(): void {
-    setTimeout(() => {
-      this.refreshNavigationHtml();
-    }, 0);
-
-    if (this.refreshNavigation != null) {
-      this.refreshNavigation.subscribe(this.refreshNavigationHtml)
-    }
   }
 
   private refreshNavigationHtml() {
