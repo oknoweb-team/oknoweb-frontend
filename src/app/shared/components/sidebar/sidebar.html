@@ -145,16 +145,14 @@
                 </button>
               </div>
 
-
               <div class="mt-4 mx-4">
                 @for (item of navigation; track $index) {
-                  {{activeId()}}
                   <button (click)="scrollToSection(item[1])" class="font-main font-bold text-black hover:text-blue-500 text-3xl hover:text-4xl hover:cursor-pointer">
                     @if (item[1] == activeId()) {
-                      <div class="text-blue-500"> {{item[0]}} </div>
+                      <div class="text-blue-500"> > {{item[0]}} </div>
                     }
                     @else {
-                      {{item[1]}}
+                      {{item[0]}}
                     }
                   </button>
                   <br>
